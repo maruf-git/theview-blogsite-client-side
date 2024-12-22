@@ -8,46 +8,51 @@ import AddBlog from "../pages/AddBlog";
 import AllBlogs from "../pages/AllBlogs";
 import FeaturedBlogs from "../pages/FeaturedBlogs";
 import Wishlist from "../pages/Wishlist";
+import PrivateRoute from "../routes/PrivateRoute";
 
 
-const MainRoute= createBrowserRouter([
+const MainRoute = createBrowserRouter([
   {
     path: "/",
-    element:<MainLayout></MainLayout>,
-    children:[
+    element: <MainLayout></MainLayout>,
+    children: [
       {
-        path:"/",
-        element:<Home></Home>
+        path: "/",
+        element: <Home></Home>
       },
       {
-        path:"/add-blog",
-        element: <AddBlog></AddBlog>
+        path: "/add-blog",
+        element: <PrivateRoute>
+          <AddBlog></AddBlog>
+        </PrivateRoute>
       },
       {
-        path:"/all-blogs",
+        path: "/all-blogs",
         element: <AllBlogs></AllBlogs>
       },
       {
-        path:"/featured-blogs",
+        path: "/featured-blogs",
         element: <FeaturedBlogs></FeaturedBlogs>
       },
       {
-        path:"/wishlist",
-        element: <Wishlist></Wishlist>
+        path: "/wishlist",
+        element: <PrivateRoute>
+          <Wishlist></Wishlist>
+        </PrivateRoute>
       },
       {
-        path:"/login",
+        path: "/login",
         element: <Login></Login>
       },
       {
-        path:"/Register",
+        path: "/Register",
         element: <Register></Register>
       },
     ]
   },
   {
-    path:"/",
-    element:<ErrorPage></ErrorPage>
+    path: "/",
+    element: <ErrorPage></ErrorPage>
   }
 ]);
 

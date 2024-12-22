@@ -3,6 +3,7 @@ import { AuthContext } from "../providers/AuthProvider";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import { ThemeContext } from "../providers/ThemeProvider";
+import axios from "axios";
 // import { Helmet } from "react-helmet-async";
 
 const AddBlog = () => {
@@ -10,7 +11,7 @@ const AddBlog = () => {
     const { themeMode } = useContext(ThemeContext);
     const navigate = useNavigate();
     const [errorMessage, setErrorMessage] = useState("");
-  
+
     // handle add post form 
     const handleSubmit = (event) => {
         event.preventDefault();
@@ -23,11 +24,25 @@ const AddBlog = () => {
         // getting blog poster data from logged in user
         const blogger_name = user?.displayName;
         const blogger_email = user?.email;
+        const blogger_image = user?.photoURL;
 
         const post_time = new Date();
-        const blog = { title, image, category, description, blogger_name, blogger_email,post_time }
+        const blog = { title, image, category, description, blogger_name, blogger_email, blogger_image, post_time }
 
-        console.log(blog);
+        axios.post(`${import.meta.env.VITE_BASE_URI}/add-blog`, blog)
+            .then(res => {
+                console.log(res.data);
+                if (res.data.insertedId) {
+                    console.log(res.data);
+                    toast.success('Post Successful!');
+                    // navigate('/all-blogs')
+                }
+
+            })
+            .catch(err => {
+                console.log(err);
+                toast.error(err.message)
+            })
 
     }
 
