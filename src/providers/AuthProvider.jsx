@@ -8,7 +8,7 @@ export const AuthContext = createContext();
 
 const AuthProvider = ({ children }) => {
 
-    const [inPrivateRoute,setInPrivateRoute] = useState(false)
+    // const [inPrivateRoute,setInPrivateRoute] = useState(false)
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
     // create user with email and password
@@ -62,8 +62,6 @@ const AuthProvider = ({ children }) => {
         logout,
         setLoading,
         loading,
-        inPrivateRoute,
-        setInPrivateRoute,
     }
     return (
         <AuthContext.Provider value={authInfo}>
