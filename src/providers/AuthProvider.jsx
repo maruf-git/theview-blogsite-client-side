@@ -3,6 +3,7 @@
 import { createContext, useEffect, useState } from 'react';
 import { auth } from '../firebase/firebase.config';
 import { createUserWithEmailAndPassword, GoogleAuthProvider, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from 'firebase/auth';
+import axios from 'axios';
 
 export const AuthContext = createContext();
 
@@ -23,7 +24,7 @@ const AuthProvider = ({ children }) => {
     const updateUserProfile = (updateInfo) => {
         return updateProfile(auth.currentUser, updateInfo)
     }
-    
+
     // create user register with google
     const googleProvider = new GoogleAuthProvider();
     const googleLogin = () => {
@@ -37,11 +38,25 @@ const AuthProvider = ({ children }) => {
 
     useEffect(() => {
         const unSubscribe = onAuthStateChanged(auth, (currentUser) => {
-            if (currentUser) {
-                setUser(currentUser);
-            } else {
-                setUser(null);
+            console.log('CurrentUser-->', currentUser)
+            // generate and delete token
+            if (currentUser?.email) {
+                // generate and set the token to the browser cookie by sending post request
+                axios.post(`${import.meta.env.VITE_BASE_URI}/jwt`, { email: currentUser?.email }, { withCredentials: true })
+                    .then(res => {
+                        console.log(res.data);
+                    })
             }
+            else {
+                // deleting token from browser cookie by sending get request
+                axios.get(`${import.meta.env.VITE_BASE_URI}/logout`, { withCredentials: true})
+            }
+            // if (currentUser) {
+            //     setUser(currentUser);
+            // } else {
+            //     setUser(null);
+            // }
+            setUser(currentUser);
             setLoading(false);
         });
 

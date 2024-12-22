@@ -10,8 +10,8 @@ const PrivateRoute = ({ children }) => {
     const location = useLocation()
 
     if (loading) return <LoadingSpinner />
-    if (user) return children
-    return <Navigate state={{ destination: location.pathname }} to="/login"></Navigate>
+    if (user) return children;
+    return <Navigate to="/login" state={{ destination: location.pathname }} ></Navigate>
 }
 
-export default PrivateRoute
+export default PrivateRoute;

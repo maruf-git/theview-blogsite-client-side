@@ -4,11 +4,13 @@ import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import { ThemeContext } from "../providers/ThemeProvider";
 import axios from "axios";
+import useAxiosSecure from "../hooks/UseAxiosSecure";
 // import { Helmet } from "react-helmet-async";
 
 const AddBlog = () => {
     const { user } = useContext(AuthContext);
     const { themeMode } = useContext(ThemeContext);
+    const axiosSecure = useAxiosSecure();
     const navigate = useNavigate();
     const [errorMessage, setErrorMessage] = useState("");
 
@@ -29,20 +31,37 @@ const AddBlog = () => {
         const post_time = new Date();
         const blog = { title, image, category, description, blogger_name, blogger_email, blogger_image, post_time }
 
-        axios.post(`${import.meta.env.VITE_BASE_URI}/add-blog`, blog)
+        // final
+        // axios.post(`${import.meta.env.VITE_BASE_URI}/add-blog`, blog, { withCredentials: true })
+        //     .then(res => {
+        //         console.log(res.data);
+        //         if (res.data.insertedId) {
+        //             console.log(res.data);
+        //             toast.success('Post Successful!');
+        //             navigate('/all-blogs');
+        //         }
+
+        //     })
+        //     .catch(err => {
+        //         console.log(err);
+        //         toast.error(err.message)
+        //     })
+
+        // experiment
+        axiosSecure.post(`${import.meta.env.VITE_BASE_URI}/add-blog`, blog)
             .then(res => {
                 console.log(res.data);
                 if (res.data.insertedId) {
                     console.log(res.data);
                     toast.success('Post Successful!');
-                    // navigate('/all-blogs')
+                    // navigate('/all-blogs');
                 }
-
             })
-            .catch(err => {
-                console.log(err);
-                toast.error(err.message)
-            })
+            
+            // .catch(err => {
+            //     console.log(err);
+            //     toast.error(err.message)
+            // })
 
     }
 

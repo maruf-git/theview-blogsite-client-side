@@ -1,5 +1,6 @@
 
 const FeaturedBlogs = () => {
+    
     return (
         <div>
             featured blogs
