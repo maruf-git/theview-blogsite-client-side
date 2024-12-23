@@ -54,7 +54,7 @@ const AddBlog = () => {
                 if (res.data.insertedId) {
                     console.log(res.data);
                     toast.success('Post Successful!');
-                    // navigate('/all-blogs');
+                    navigate('/all-blogs');
                 }
             })
             
