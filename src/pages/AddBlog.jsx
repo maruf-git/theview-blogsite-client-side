@@ -101,9 +101,10 @@ const AddBlog = () => {
                                     <span className="label-text">Category</span>
                                 </label>
                                 <select id='category' name="category" className="select select-bordered w-full ">
-                                    <option >Education</option>
+                                    <option >Business</option>
                                     <option >Entertainment</option>
                                     <option >Lifestyle</option>
+                                    <option >Science</option>
                                     <option >Sports</option>
                                     <option >Technology</option>
                                 </select>
