@@ -10,7 +10,7 @@ import LoadingSpinner from "../components/LoadingSpinner";
 
 const BlogDetails = () => {
     const { id } = useParams();
-    const { user,loading } = useContext(AuthContext);
+    const { user, loading } = useContext(AuthContext);
     const [blog, setBlog] = useState({});
     const [comments, setComments] = useState([]);
     const axiosSecure = useAxiosSecure();
@@ -24,8 +24,9 @@ const BlogDetails = () => {
 
     }, [axiosSecure, id])
     // destructure the blog
-    const { title, image, category, post_time, description,short_des, blogger_image, blogger_name, blogger_email} = blog;
+    const { title, image, category, post_time, description, short_des, blogger_image, blogger_name, blogger_email } = blog;
     // const date = parseISO(post_time);
+    console.log(description);
 
     // get all comments on this blog
     const getAllComments = () => {
@@ -63,6 +64,11 @@ const BlogDetails = () => {
     }
 
     if (loading) return <LoadingSpinner></LoadingSpinner>;
+    // great !
+    if (!description) {
+        // Provide a fallback if description is undefined
+        return <LoadingSpinner></LoadingSpinner>
+    }
 
     return (
         <div className="max-w-screen-md mx-auto my-20">
@@ -97,7 +103,12 @@ const BlogDetails = () => {
                     <img className="w-full object-cover" src={image} alt={title} />
                 </figure>
                 {/* blog description */}
-                <p className="text-[20px] text-[#242424]">{description}</p>
+                {/* <p className="text-[20px] text-[#242424]">{description}</p> */}
+                {description &&
+                    description.split('\n').map((paragraph, index) => (
+                        <p className="text-[20px] text-[#242424]" key={index}>{paragraph}</p>
+                    ))
+                }
 
                 {/* comments section*/}
                 <div className="!mt-20 !mb-10">
