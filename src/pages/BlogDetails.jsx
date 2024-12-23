@@ -24,7 +24,7 @@ const BlogDetails = () => {
 
     }, [axiosSecure, id])
     // destructure the blog
-    const { title, image, category, post_time, description, blogger_image, blogger_name, blogger_email } = blog;
+    const { title, image, category, post_time, description,short_des, blogger_image, blogger_name, blogger_email} = blog;
     // const date = parseISO(post_time);
 
     // get all comments on this blog
@@ -70,7 +70,7 @@ const BlogDetails = () => {
                 {/* blog title */}
                 <h1 className="text-[#242424] font-bold text-4xl">{title}</h1>
                 {/* blog short description */}
-                <p className="text-[#6B6B6B] font-semibold text-xl">The shared elegance of neural networks & human psycholinguistics — and a new unified cognitive theory of sparse representation and infinite possibilities.</p>
+                <p className="text-[#6B6B6B] font-semibold text-xl">{short_des}</p>
                 {/* blogger details and update blog*/}
                 <div className="flex justify-between">
                     {/* blogger details */}

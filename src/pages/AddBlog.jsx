@@ -22,6 +22,7 @@ const AddBlog = () => {
         const title = form.title.value;
         const image = form.image.value;
         const category = form.category.value;
+        const short_des = form.short_des.value;
         const description = form.description.value;
         // getting blog poster data from logged in user
         const blogger_name = user?.displayName;
@@ -29,7 +30,7 @@ const AddBlog = () => {
         const blogger_image = user?.photoURL;
 
         const post_time = new Date();
-        const blog = { title, image, category, description, blogger_name, blogger_email, blogger_image, post_time }
+        const blog = { title, image, category,short_des, description, blogger_name, blogger_email, blogger_image, post_time }
 
         // final
         // axios.post(`${import.meta.env.VITE_BASE_URI}/add-blog`, blog, { withCredentials: true })
@@ -76,7 +77,7 @@ const AddBlog = () => {
                     <div className="card bg-base-100 w-full max-w-2xl shrink-0 shadow-2xl">
 
                         <div >
-                            <h1 className="text-3xl md:text-5xl  font-bold text-center pt-8">Add Blog </h1>
+                            <h1 className="text-3xl md:text-5xl  font-bold text-center pt-8">Add a New Blog </h1>
                         </div>
 
                         <form onSubmit={handleSubmit} className="card-body grid grid-cols-2 gap-x-5">
@@ -109,6 +110,14 @@ const AddBlog = () => {
                                     <option >Technology</option>
                                 </select>
                             </div>
+                            {/*Short Description */}
+                            <div className="form-control col-span-2">
+                                <label className="label" htmlFor="short_des">
+                                    <span className="label-text">Short Description</span>
+                                </label>
+                                <input id='short_des' name="short_des" type="text" placeholder="write short description" className="input input-bordered" required />
+                                {/* <textarea  className="textarea textarea-bordered" ></textarea> */}
+                            </div>
                             {/* Description */}
                             <div className="form-control col-span-2">
                                 <label className="label" htmlFor="description">
@@ -116,20 +125,7 @@ const AddBlog = () => {
                                 </label>
                                 <textarea id='description' name="description" className="textarea textarea-bordered" placeholder="Write detailed review"></textarea>
                             </div>
-                            {/* User Name */}
-                            <div className="form-control col-span-2 sm:col-span-1">
-                                <label className="label">
-                                    <span className="label-text">User Name</span>
-                                </label>
-                                <input disabled type="text" defaultValue={user?.displayName} className="input input-bordered" required />
-                            </div>
-                            {/* email */}
-                            <div className="form-control col-span-2 sm:col-span-1">
-                                <label className="label">
-                                    <span className="label-text">Email</span>
-                                </label>
-                                <input disabled type="email" defaultValue={user?.email} className="input input-bordered" required />
-                            </div>
+                            {/* error message print */}
                             <div className="form-control">
                                 {
                                     errorMessage && <p className="text-red-700">{errorMessage}</p>
