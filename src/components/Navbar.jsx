@@ -26,8 +26,8 @@ const Navbar = () => {
 
 
     return (
-
-        <div className={`py-3 shadow-xl  ${themeMode === "light" ? "light" : "dark"}`}>
+        // shadow-xl 
+        <div className={`py-5 border-b  ${themeMode === "light" ? "light" : "dark"}`}>
             {/* navbar */}
             <div className="">
                 <div className="max-w-screen-xl mx-auto px-1">
@@ -105,7 +105,7 @@ const Navbar = () => {
                                         {/* photo */}
                                         <div className="avatar flex flex-col sm:flex-row justify-center items-center gap-2 sm:gap-2 lg:gap-3">
                                             {/* react tool tip applied here */}
-                                            <div data-tooltip-id="my-tooltip" data-tooltip-content={`${user.displayName}`} className="ring-primary ring-offset-base-100 w-8 md:w-16 rounded-full ring ring-offset-2">
+                                            <div data-tooltip-id="my-tooltip" data-tooltip-content={`${user.displayName}`} className="ring-primary ring-offset-base-100 w-8 md:w-12 rounded-full ring ring-offset-2">
                                                 <img src={`${user?.photoURL}`} />
                                             </div>
 

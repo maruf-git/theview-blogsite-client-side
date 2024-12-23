@@ -2,17 +2,20 @@ import { Link } from "react-router-dom";
 
 /* eslint-disable react/prop-types */
 const BlogCard = ({ blog }) => {
-    console.log(blog);
-    const { title, image, category,_id } = blog;
+    // console.log(blog);
+    const { title, image, category, _id } = blog;
     return (
         <div className="card card-compact bg-base-100 w-[300px]  rounded-none">
             {/* blog image */}
-            <figure>
-                <img
-                    className="h-[150px] w-full object-cover"
-                    src={image}
-                    alt={title} />
-            </figure>
+            <Link to={`/blogs/${_id}`}>
+                <figure>
+                    <img
+                        className="h-[150px] w-full object-cover"
+                        src={image}
+                        alt={title} />
+                </figure>
+            </Link>
+
             {/* blog title */}
             <div className="card-body !p-0 !m-0 !mt-2 gap-0">
                 <p className="text-base">{category}</p>

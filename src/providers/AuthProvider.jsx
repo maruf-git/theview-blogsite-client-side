@@ -44,7 +44,7 @@ const AuthProvider = ({ children }) => {
                 // generate and set the token to the browser cookie by sending post request
                 axios.post(`${import.meta.env.VITE_BASE_URI}/jwt`, { email: currentUser?.email }, { withCredentials: true })
                     .then(res => {
-                        console.log(res.data);
+                        console.log("token creation successful.",res.data);
                     })
             }
             else {
