@@ -2,14 +2,18 @@ import { useContext, useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import useAxiosSecure from "../hooks/UseAxiosSecure";
 import { AuthContext } from "../providers/AuthProvider";
+import axios from "axios";
+import toast from "react-hot-toast";
 // import { format, parseISO } from "date-fns";
 
 const BlogDetails = () => {
     const { id } = useParams();
     const { user } = useContext(AuthContext);
     const [blog, setBlog] = useState({});
+    const [comments, setComments] = useState([]);
     const axiosSecure = useAxiosSecure();
 
+    // get specific blog
     useEffect(() => {
         axiosSecure.get(`${import.meta.env.VITE_BASE_URI}/blogs/${id}`)
             .then(res => {
@@ -17,17 +21,41 @@ const BlogDetails = () => {
             })
 
     }, [axiosSecure, id])
-
+    // destructure the blog
     const { title, image, category, post_time, description, blogger_image, blogger_name, blogger_email } = blog;
     // const date = parseISO(post_time);
 
+    // get all comments on this blog
+    const getAllComments = () => {
+        axios.get(`${import.meta.env.VITE_BASE_URI}/comments/${id}`)
+            .then(res => {
+                console.log(res.data);
+                setComments(res.data);
+            })
+    }
+    useEffect(() => {
+        getAllComments()
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [id])
+
     // handleComment
-    const handleComment=(event)=>{
+    const handleComment = (event) => {
         event.preventDefault();
         const comment = event.target.comment.value;
         const comment_time = new Date();
-        const commentDetails={comment,commenter:user?.displayName,commenter_email:user?.email,comment_time,blog_id:id};
-        console.log(commentDetails);
+        const commentDetails = { comment, commenter: user?.displayName, commenter_email: user?.email, comment_time, blog_id: id };
+
+        axios.post(`${import.meta.env.VITE_BASE_URI}/add-comment`, commentDetails)
+            .then(res => {
+                if (res.data.insertedId) {
+                    toast.success('Comment Successful');
+                    getAllComments();
+                }
+            })
+            .catch(err => {
+                // console.log(err);
+                toast.error(err.message);
+            })
     }
 
     return (
