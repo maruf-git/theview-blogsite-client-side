@@ -21,9 +21,9 @@ const WishlistBlogCard = ({ blog,handleDelete }) => {
                 {/* button container */}
                 <div className="flex flex-col gap-3">
                     {/* details button */}
-                    <Link to={`/blog/${blog_id}`} className="btn btn-sm btn-outline hover:btn-success hover:!text-white">Details</Link>
+                    <Link to={`/blog/${blog_id}`} className="btn  btn-sm bg-success  btn-success !text-white">Details</Link>
                     {/* delete button */}
-                    <button onClick={()=>{handleDelete(_id)}} className="btn btn-sm btn-outline hover:btn-error hover:!text-white">Delete</button>
+                    <button onClick={()=>{handleDelete(_id)}} className="btn btn-sm  bg-error btn-error !text-white">Delete</button>
                 </div>
             </div>
         </div>

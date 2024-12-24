@@ -62,7 +62,7 @@ const BlogCard = ({ blog }) => {
             <p className="mb-2">{short_des.slice(0, 100)}...</p>
             {/* <div className="divider m-0"></div> */}
             <div className="flex flex-wrap justify-between items-center gap-2">
-                <Link to={`/blog/${_id}`} className="btn btn-sm btn-outline  w-full hover:btn-success hover:!text-white rounded-none">Details</Link>
+                <Link to={`/blog/${_id}`} className="btn btn-sm  w-full bg-success  btn-success !text-white rounded-none">Details</Link>
                 {/* <button className="btn btn-sm btn-outline btn-primary w-full rounded-none">Wishlist</button> */}
             </div>
             {/* react tool tip */}
