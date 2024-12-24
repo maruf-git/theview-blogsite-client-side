@@ -106,7 +106,7 @@ const Navbar = () => {
                                         <div className="avatar flex flex-col sm:flex-row justify-center items-center gap-2 sm:gap-2 lg:gap-3">
                                             {/* react tool tip applied here */}
                                             <div data-tooltip-id="my-tooltip" data-tooltip-content={`${user.displayName}`} className="ring-primary ring-offset-base-100 w-8 md:w-12 rounded-full ring ring-offset-2">
-                                                <img src={`${user?.photoURL}`} />
+                                                <img referrerPolicy="no-referrer" src={`${user?.photoURL}`} />
                                             </div>
 
                                             <button onClick={handleLogout} className={`btn btn-sm btn-primary text-[12px] md:text-sm`}>Log out</button>

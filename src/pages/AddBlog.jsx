@@ -24,13 +24,14 @@ const AddBlog = () => {
         const category = form.category.value;
         const short_des = form.short_des.value;
         const description = form.description.value;
+        const length = description.length;
         // getting blog poster data from logged in user
         const blogger_name = user?.displayName;
         const blogger_email = user?.email;
         const blogger_image = user?.photoURL;
 
         const post_time = new Date();
-        const blog = { title, image, category,short_des, description, blogger_name, blogger_email, blogger_image, post_time }
+        const blog = { title, image, category, short_des, description, blogger_name, blogger_email, blogger_image, post_time, length }
 
         // final
         // axios.post(`${import.meta.env.VITE_BASE_URI}/add-blog`, blog, { withCredentials: true })
@@ -58,11 +59,11 @@ const AddBlog = () => {
                     navigate('/all-blogs');
                 }
             })
-            
-            // .catch(err => {
-            //     console.log(err);
-            //     toast.error(err.message)
-            // })
+
+        // .catch(err => {
+        //     console.log(err);
+        //     toast.error(err.message)
+        // })
 
     }
 

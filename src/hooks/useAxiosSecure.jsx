@@ -14,7 +14,7 @@ const useAxiosSecure = () => {
     const navigate = useNavigate();
     const { logout } = useContext(AuthContext);
 
-    useEffect(()=>{
+    useEffect(() => {
         axiosSecure.interceptors.response.use(res => {
             return res;
         }, async (error) => {
@@ -26,7 +26,7 @@ const useAxiosSecure = () => {
                 navigate('/login');
             }
         })
-    },[logout, navigate])
+    }, [logout, navigate])
 
     return axiosSecure;
 };

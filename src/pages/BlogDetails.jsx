@@ -17,7 +17,7 @@ const BlogDetails = () => {
 
     // get specific blog
     useEffect(() => {
-        axiosSecure.get(`${import.meta.env.VITE_BASE_URI}/blogs/${id}`)
+        axiosSecure.get(`${import.meta.env.VITE_BASE_URI}/blog/${id}`)
             .then(res => {
                 setBlog(res.data);
             })
