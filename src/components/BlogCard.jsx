@@ -17,7 +17,7 @@ const BlogCard = ({ blog }) => {
         const blog_id = _id;
         const email = user?.email;
         const wishlistInfo = { blog_id, email, title, image, category, short_des };
-        console.log("wishlist :", wishlistInfo);
+        
 
         // posting the data to the database
         axiosSecure.post(`${import.meta.env.VITE_BASE_URI}/wishlist`, wishlistInfo)
@@ -50,17 +50,19 @@ const BlogCard = ({ blog }) => {
                 {/* </Link> */}
             </div>
 
-            {/* blog title */}
+            {/* blog title and category*/}
             <div className="card-body !p-0 !m-0 !mt-2 gap-0">
+                {/* category */}
                 <p className="text-base">{category}</p>
-                <Link to={`/blogs/${_id}`}><h2 className="card-title p-0 m-0 hover:underline">{title.slice(0, 55)}...</h2></Link>
+                {/* title */}
+                <Link to={`/blogs/${_id}`}><h2 className="card-title p-0 m-0 hover:underline font-bold">{title.slice(0, 55)}...</h2></Link>
             </div>
             {/* blog short description */}
             <div className="divider m-0"></div>
             <p className="mb-2">{short_des.slice(0, 100)}...</p>
             {/* <div className="divider m-0"></div> */}
             <div className="flex flex-wrap justify-between items-center gap-2">
-                <Link to={`/blogs/${_id}`} className="btn btn-sm btn-outline  w-full rounded-none">Details</Link>
+                <Link to={`/blog/${_id}`} className="btn btn-sm btn-outline  w-full hover:btn-success hover:!text-white rounded-none">Details</Link>
                 {/* <button className="btn btn-sm btn-outline btn-primary w-full rounded-none">Wishlist</button> */}
             </div>
             {/* react tool tip */}

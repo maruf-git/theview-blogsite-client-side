@@ -1,7 +1,8 @@
 import { useContext, useState } from "react";
 import { FaEye, FaEyeSlash } from "react-icons/fa6";
-import { Link,useLocation, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../providers/AuthProvider";
+import axios from "axios";
 // import { Helmet } from "react-helmet-async";
 
 
@@ -10,9 +11,9 @@ const Login = () => {
     const navigate = useNavigate();
     const [showPassword, setShowPassword] = useState(false);
     const [errorMessage, setErrorMessage] = useState("");
-    const { userLogin, setUser, googleLogin} = useContext(AuthContext);
+    const { userLogin, setUser, googleLogin } = useContext(AuthContext);
     const location = useLocation();
- 
+
     const handleSubmit = (event) => {
         event.preventDefault();
         setErrorMessage("");
@@ -21,12 +22,12 @@ const Login = () => {
         userLogin(email, password)
             .then(res => {
                 setUser(res.user);
-                if (location && location.state && location.state.destination) {
-                    navigate(`${location?.state?.destination}`)
-                }
-                else {
-                    navigate("/");
-                }
+                console.log("redirect:", location?.state);
+                axios.post(`${import.meta.env.VITE_BASE_URI}/jwt`, { email: res.user?.email }, { withCredentials: true })
+                    .then(res => {
+                        console.log("token creation successful.", res.data);
+                        navigate(location?.state || '/');
+                    })
             })
             .catch(err => {
                 setErrorMessage(err.message);
@@ -43,12 +44,16 @@ const Login = () => {
         googleLogin()
             .then((result) => {
                 setUser(result.user);
-                if (location && location.state && location.state.destination) {
-                    navigate(`${location?.state?.destination}`)
-                }
-                else {
-                    navigate("/");
-                }
+                console.log("redirect:", location?.state);
+
+                axios.post(`${import.meta.env.VITE_BASE_URI}/jwt`, { email: result.user?.email }, { withCredentials: true })
+                    .then(res => {
+                        console.log("token creation successful.", res.data);
+                        navigate(location?.state || '/');
+                    })
+
+
+
             })
             .catch(() => {
                 // console.log(err.message);
@@ -83,7 +88,7 @@ const Login = () => {
                                 showPassword ? <FaEyeSlash onClick={handleShowPassword} className="absolute top-[55px] right-[30px]" /> : <FaEye onClick={handleShowPassword} className="absolute top-[55px] right-[30px]" />
                             }
                         </div>
-                        
+
                         {
                             errorMessage && <div className="form-control">
                                 <p className="font-semibold text-red-500">{errorMessage}</p>
@@ -96,10 +101,12 @@ const Login = () => {
                     <div className="card-body mt-0 pt-0">
                         <div className="form-control space-y-3">
                             <p className="text-center font-semibold">Or</p>
-                            <button onClick={handleGoogleLogin} className="btn btn-primary">Login with Google</button>
+                            <button type="button" onClick={handleGoogleLogin} className="btn btn-primary">Login with Google</button>
                         </div>
                         <div className="form-control">
-                            <p className="font-semibold ">Don't have an Account? <Link state={{ destination: location?.state?.destination }} to="/register" className="text-red-500 border-b-2 border-red-500">Register here!</Link></p>
+                            {/* location?.state */}
+                            {/* { destination: location?.state?.destination } */}
+                            <p className="font-semibold ">Don't have an Account? <Link state={location?.state} to="/register" className="text-red-500 border-b-2 border-red-500">Register here!</Link></p>
                         </div>
                     </div>
                 </div>

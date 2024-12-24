@@ -109,7 +109,7 @@ const Navbar = () => {
                                                 <img referrerPolicy="no-referrer" src={`${user?.photoURL}`} />
                                             </div>
 
-                                            <button onClick={handleLogout} className={`btn btn-sm btn-primary text-[12px] md:text-sm`}>Log out</button>
+                                            <button onClick={handleLogout} className={`btn btn-sm btn-primary  md:text-sm`}>Log out</button>
                                         </div>
                                     </div>
                                     :

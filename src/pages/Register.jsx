@@ -32,13 +32,11 @@ const Register = () => {
         }
         const uppercaseRegex = /[A-Z]/;
         const lowercaseRegex = /[a-z]/;
-        if(name.trim()==="")
-        {
+        if (name.trim() === "") {
             setValidationMessage("Name can not be empty");
             return;
         }
-        if(photo.trim()==="")
-        {
+        if (photo.trim() === "") {
             setValidationMessage("Photo URL can not be empty");
             return;
         }
@@ -56,13 +54,15 @@ const Register = () => {
                 // update user profile  during register
                 updateUserProfile(updateInfo)
                     .then(() => {
-                        setUser(result.user);
-                        if (location && location.state && location.state.destination) {
-                            navigate(`${location?.state?.destination}`)
-                        }
-                        else {
-                            navigate("/");
-                        }
+                        // setUser(result.user);
+                        console.log("redirect:", location?.state);
+                        navigate(location?.state || '/');
+                        // if (location && location.state && location.state.destination) {
+                        //     navigate(`${location?.state?.destination}`)
+                        // }
+                        // else {
+                        //     navigate("/");
+                        // }
                     })
                     .catch(() => {
                         // console.log(err.message);
@@ -78,13 +78,15 @@ const Register = () => {
     const handleGoogleLogin = () => {
         googleLogin()
             .then((result) => {
-                setUser(result.user);
-                if (location && location.state && location.state.destination) {
-                    navigate(`${location?.state?.destination}`)
-                }
-                else {
-                    navigate("/");
-                }
+                // setUser(result.user);
+                console.log("redirect:", location?.state);
+                navigate(location?.state || '/');
+                // if (location && location.state && location.state.destination) {
+                //     navigate(`${location?.state?.destination}`)
+                // }
+                // else {
+                //     navigate("/");
+                // }
             })
             .catch(() => {
                 // console.log(err.message);

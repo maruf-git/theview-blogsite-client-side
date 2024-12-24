@@ -18,6 +18,7 @@ const useAxiosSecure = () => {
         axiosSecure.interceptors.response.use(res => {
             return res;
         }, async (error) => {
+            console.log(error);
             console.log('error caught from our interceptor--->', error.message);
             if (error.response.status === 401 || error.response.status === 403) {
                 // logout

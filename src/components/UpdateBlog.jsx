@@ -4,6 +4,7 @@ import useAxiosSecure from "../hooks/UseAxiosSecure";
 import { useNavigate, useParams } from "react-router-dom";
 import toast from "react-hot-toast";
 
+
 const UpdateBlog = () => {
     const { id } = useParams();
     const { themeMode } = useContext(ThemeContext);
@@ -14,14 +15,14 @@ const UpdateBlog = () => {
 
     // get specific blog
     useEffect(() => {
-        axiosSecure.get(`${import.meta.env.VITE_BASE_URI}/blogs/${id}`)
+        axiosSecure.get(`${import.meta.env.VITE_BASE_URI}/blog/${id}`)
             .then(res => {
                 setBlog(res.data);
             })
 
     }, [axiosSecure, id])
 
-    console.log("blog :::", blog);
+   
     // handle add post form 
     const handleSubmit = (event) => {
         event.preventDefault();
@@ -40,9 +41,9 @@ const UpdateBlog = () => {
             .then(res => {
                 if (res.data.modifiedCount) {
                     toast.success("Blog Updated Successfully!");
-                    navigate(`/blogs/${id}`);
+                    navigate(`/blog/${id}`);
                 }
-                // console.log("patch response: ", res.data);
+                
             })
 
     }

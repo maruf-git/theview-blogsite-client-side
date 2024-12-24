@@ -37,32 +37,32 @@ const AuthProvider = ({ children }) => {
     }
 
     useEffect(() => {
-        const unSubscribe = onAuthStateChanged(auth, (currentUser) => {
+        const unSubscribe = onAuthStateChanged(auth, async (currentUser) => {
             console.log('CurrentUser-->', currentUser)
+            // setUser(currentUser);
             // generate and delete token
-            if (currentUser?.email) {
+            if (currentUser) {
+                setUser(currentUser);
                 // generate and set the token to the browser cookie by sending post request
                 axios.post(`${import.meta.env.VITE_BASE_URI}/jwt`, { email: currentUser?.email }, { withCredentials: true })
                     .then(res => {
-                        console.log("token creation successful.",res.data);
+                        console.log("token creation successful.", res.data);
                     })
             }
             else {
+                setUser(currentUser);
                 // deleting token from browser cookie by sending get request
-                axios.get(`${import.meta.env.VITE_BASE_URI}/logout`, { withCredentials: true})
+                axios.get(`${import.meta.env.VITE_BASE_URI}/logout`, { withCredentials: true })
+                    .then(res => {
+                    })
             }
-            // if (currentUser) {
-            //     setUser(currentUser);
-            // } else {
-            //     setUser(null);
-            // }
-            setUser(currentUser);
             setLoading(false);
+
         });
 
 
         return () => {
-            unSubscribe;
+            unSubscribe();
         }
     }, [])
 
