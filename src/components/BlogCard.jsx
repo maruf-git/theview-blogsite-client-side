@@ -17,8 +17,6 @@ const BlogCard = ({ blog }) => {
         const blog_id = _id;
         const email = user?.email;
         const wishlistInfo = { blog_id, email, title, image, category, short_des };
-        
-
         // posting the data to the database
         axiosSecure.post(`${import.meta.env.VITE_BASE_URI}/wishlist`, wishlistInfo)
             .then(res => {
@@ -32,13 +30,13 @@ const BlogCard = ({ blog }) => {
 
 
     return (
-        <div className="card card-compact bg-base-100 w-[300px]  rounded-none">
+        <div className="card card-compact bg-base-100 w-[410px]  rounded-none">
             {/* blog image */}
             <div >
                 {/* <Link to={`/blogs/${_id}`}> */}
                 <figure className="relative">
                     <img
-                        className="h-[150px] w-full object-cover"
+                        className="h-[200px] w-full object-cover rounded-md"
                         src={image}
                         alt={title} />
                     <FaBookmark
@@ -55,14 +53,15 @@ const BlogCard = ({ blog }) => {
                 {/* category */}
                 <p className="text-base">{category}</p>
                 {/* title */}
-                <Link to={`/blog/${_id}`}><h2 className="card-title p-0 m-0 hover:underline font-bold">{title.slice(0, 55)}...</h2></Link>
+                <Link to={`/blog/${_id}`}><h2 className="card-title p-0 m-0 hover:underline font-bold">{title.slice(0, 60)}...</h2></Link>
             </div>
             {/* blog short description */}
             <div className="divider m-0"></div>
             <p className="mb-2">{short_des.slice(0, 100)}...</p>
             {/* <div className="divider m-0"></div> */}
             <div className="flex flex-wrap justify-between items-center gap-2">
-                <Link to={`/blog/${_id}`} className="btn btn-sm  w-full bg-success  btn-success !text-white rounded-none">Details</Link>
+            {/* bg-success  btn-success !text-white */}
+                <Link to={`/blog/${_id}`} className="btn w-full bg-[#009bff] hover:bg-[#0073bd] text-white ">Details</Link>
                 {/* <button className="btn btn-sm btn-outline btn-primary w-full rounded-none">Wishlist</button> */}
             </div>
             {/* react tool tip */}

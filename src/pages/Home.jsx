@@ -1,11 +1,24 @@
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../providers/AuthProvider";
 import bannersvg from "../assets/bannersvg.svg"
 import { TiTick } from "react-icons/ti";
 import { Link } from "react-router-dom";
+import axios from "axios";
+import BlogCard from "../components/BlogCard";
 
 const Home = () => {
     const { user } = useContext(AuthContext);
+    const [recentBlogs, setRecentBlogs] = useState([]);
+    useEffect(() => {
+        axios.get(`${import.meta.env.VITE_BASE_URI}/blogs/recent`)
+            .then(res => {
+                // console.log(res.data);
+                setRecentBlogs(res.data);
+            })
+            .catch(err => {
+                console.log(err);
+            })
+    }, [])
     return (
         <div>
             {/* hero section */}
@@ -13,8 +26,7 @@ const Home = () => {
                 style={{
                     backgroundImage: `url(https://i.ibb.co.com/v4h7JN4/banner.webp)`,
                 }}
-                className={`bg-cover bg-no-repeat mb-[500px] bg-center`}
-
+                className={`bg-cover bg-no-repeat bg-center`}
             >
                 <div className="max-w-screen-xl mx-auto min-h-[700px]  flex justify-between items-center">
                     {/* text content */}
@@ -47,6 +59,21 @@ const Home = () => {
                     </div>
                 </div>
 
+            </section>
+
+            {/* recent blogs section */}
+            <section className="my-20">
+                <div className="max-w-screen-xl mx-auto">
+                    <div className="mb-10">
+                        <h1 className="font-bold text-4xl pl-2 border-l-[5px] py-5">Recent Blogs</h1>
+                    </div>
+                    {/* cards container */}
+                    <div className="grid grid-cols-3 gap-5">
+                        {
+                            recentBlogs.map(blog => <BlogCard key={blog._id} blog={blog}></BlogCard>)
+                        }
+                    </div>
+                </div>
             </section>
         </div>
     );

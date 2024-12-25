@@ -87,7 +87,7 @@ const AllBlogs = () => {
             </div>
 
             {/* blogs card container */}
-            <div className="mb-20  grid grid-cols-4 gap-5">
+            <div className="mb-20  grid grid-cols-3 gap-5">
                 {
                     blogs.map(blog => <BlogCard key={blog._id} blog={blog}></BlogCard>)
                 }
