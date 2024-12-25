@@ -34,7 +34,6 @@ const BlogCard = ({ blog }) => {
         <div className="card card-compact bg-base-100 w-[410px]  rounded-none">
             {/* blog image */}
             <div >
-
                 {/* <Link to={`/blogs/${_id}`}> */}
                 <figure
 
@@ -59,7 +58,7 @@ const BlogCard = ({ blog }) => {
                 {/* category */}
                 <p className="text-base">{category}</p>
                 {/* title */}
-                <Link to={`/blog/${_id}`}><h2 className="card-title p-0 m-0 hover:underline font-bold">{title.slice(0, 60)}...</h2></Link>
+                <Link to={`/blog/${_id}`}><h2 className="card-title p-0 m-0 font-bold hover:text-blue-700 hover:underline">{title.slice(0, 60)}...</h2></Link>
             </div>
             {/* blog short description */}
             <div className="divider m-0"></div>

@@ -42,7 +42,13 @@ const AllBlogs = () => {
                     <select
                         value={filter}
                         onChange={(event) => {
-                            setFilter(event.target.value)
+                            if (!event.target.value) {
+                                // console.log("filter null value called")
+                                setFilter('')
+                            } else {
+                                setFilter(event.target.value)
+                            }
+
                         }}
                         name='category'
                         id='category'

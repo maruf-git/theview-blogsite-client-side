@@ -94,7 +94,7 @@ const AddBlog = () => {
                                 <label className="label" htmlFor="image">
                                     <span className="label-text">Blog Image URL</span>
                                 </label>
-                                <input id='image' type="text" name="image" placeholder="image url" className="input input-bordered" required />
+                                <input id='image' type="url" name="image" placeholder="image url" className="input input-bordered" required />
                             </div>
 
                             {/* category */}

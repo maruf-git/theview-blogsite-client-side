@@ -8,10 +8,13 @@ import BlogCard from "../components/BlogCard";
 import newsLetterLottie from "../assets/newsletter.json"
 import Lottie from "lottie-react";
 import toast from "react-hot-toast";
+import TechnologyBlogCard from "../components/TechnologyBlogCard";
+import TwoColBlogCard from "../components/TwoColBlogCard";
 
 const Home = () => {
     const { user } = useContext(AuthContext);
     const [recentBlogs, setRecentBlogs] = useState([]);
+    const [blogs, setBlogs] = useState([]);
     useEffect(() => {
         axios.get(`${import.meta.env.VITE_BASE_URI}/blogs/recent`)
             .then(res => {
@@ -23,7 +26,19 @@ const Home = () => {
             })
     }, [])
 
-    const handleSubmit=(event)=>{
+    useEffect(() => {
+        axios.get(`${import.meta.env.VITE_BASE_URI}/blogs?filter=${''}&search=${''}`)
+            .then(res => {
+                // console.log(res.data);
+                setBlogs([...res.data].reverse());
+            })
+            .catch(err => {
+                console.log(err);
+            })
+    }, [])
+
+    // handle email to subscribe
+    const handleSubmit = (event) => {
         event.preventDefault();
         const email = event.target.email.value;
         console.log(email);
@@ -74,7 +89,7 @@ const Home = () => {
             </section>
 
             {/* recent blogs section */}
-            <section className="my-20">
+            <section className="mt-20">
                 <div className="max-w-screen-xl mx-auto">
                     <div className="mb-10">
                         <h1 className="font-bold text-4xl pl-2 border-l-[5px] py-5">Recent Blogs</h1>
@@ -85,27 +100,81 @@ const Home = () => {
                             recentBlogs.map(blog => <BlogCard key={blog._id} blog={blog}></BlogCard>)
                         }
                     </div>
-                    {/* newsletter section */}
-                    <section className=" py-10 lg:py-20 px-1 lg:px-0">
-                        <div className="max-w-screen-xl mx-auto p-10 bg-[rgb(229,246,255)] rounded-3xl flex flex-col justify-center items-center gap-5 md:items-center md:flex-row md:justify-between shadow-xl">
-                            {/* newsletter left side*/}
-                            <div className="flex flex-col gap-6 ">
-                                <h1 className="text-2xl md:text-3xl font-bold">Stay Connected & Get The Trending Updates</h1>
-                                <p className="">35,00,000+ Subscriptions Across Bangladesh! & Counting! Subscribe to have new coupon <br className="md:block hidden" />lists delivered directly to your inbox</p>
-                                <form onSubmit={handleSubmit} className="flex gap-1 items-center">
-                                    <input name='email' type="email" placeholder="Enter Email Address" className="input input-bordered w-full max-w-xs" required />
-                                    {/*  */}
-                                    <button  className="btn outline-none border-none bg-[#009bff] hover:bg-[#0073bd] text-white !font-semibold">Subscribe</button>
-                                </form>
-                            </div>
-                            {/* newsletter  right side */}
-                            <div>
-                                <Lottie className="w-[300px]" animationData={newsLetterLottie} loop={true} />
-                            </div>
-                        </div>
-                    </section>
                 </div>
             </section>
+
+            {/* technology blogs section */}
+            <section className="mt-20  bg-[#F2F1ED]">
+
+                <div className="max-w-screen-xl mx-auto py-14 ">
+                    <div className="mb-5">
+                        <h1 className="font-bold text-4xl pl-2 border-l-[5px] py-5">Technology</h1>
+                    </div>
+                    <div className="grid grid-cols-4 gap-5 overflow-hidden">
+                        {
+                            blogs.filter((blog) => blog.category === "Technology")
+                                .slice(0, 8)
+                                .map((blog) => <TechnologyBlogCard key={blog._id} blog={blog}></TechnologyBlogCard>)
+                        }
+                    </div>
+                </div>
+            </section>
+
+            {/*sports,lifestyle, entertainment */}
+            <section className="mt-20">
+                <div className="max-w-screen-xl mx-auto">
+                    <div className="grid grid-cols-2 gap-5">
+                        {/* sports */}
+                        <div className="">
+                            <div className="mb-5">
+                                <h1 className="font-bold text-4xl pl-2 border-l-[5px] py-5">Sports</h1>
+                            </div>
+                            {
+                                blogs.filter((blog) => blog.category === "Sports")
+                                    .slice(0, 6)
+                                    .map((blog, idx) => <TwoColBlogCard key={blog._id} blog={blog} idx={idx}></TwoColBlogCard>)
+                            }
+                        </div>
+                        {/* Entertainment */}
+                        <div className="">
+                            <div className="mb-5">
+                                <h1 className="font-bold text-4xl pl-2 border-l-[5px] py-5">Entertainment</h1>
+                            </div>
+                            {
+                                blogs.filter((blog) => blog.category === "Entertainment")
+                                    .slice(0, 6)
+                                    .map((blog, idx) => <TwoColBlogCard key={blog._id} blog={blog} idx={idx}></TwoColBlogCard>)
+                            }
+                        </div>
+                        {/* lifestyle
+                        <div className="border border-blue-400">
+
+                        </div> */}
+                    </div>
+                </div>
+            </section>
+
+            {/* newsletter section */}
+            <section className="my-20 py-10 px-1 lg:px-0">
+                <div className="max-w-screen-xl mx-auto p-10 bg-[rgb(229,246,255)] rounded-3xl flex flex-col justify-center items-center gap-5 md:items-center md:flex-row md:justify-between shadow-xl">
+                    {/* newsletter left side*/}
+                    <div className="flex flex-col gap-6 ">
+                        <h1 className="text-2xl md:text-3xl font-bold">Stay Connected & Get The Trending Updates</h1>
+                        <p className="">35,00,000+ Subscriptions Across Bangladesh! & Counting! Subscribe to have new coupon <br className="md:block hidden" />lists delivered directly to your inbox</p>
+                        <form onSubmit={handleSubmit} className="flex gap-1 items-center">
+                            <input name='email' type="email" placeholder="Enter Email Address" className="input input-bordered w-full max-w-xs" required />
+                            {/*  */}
+                            <button className="btn outline-none border-none bg-[#009bff] hover:bg-[#0073bd] text-white !font-semibold">Subscribe</button>
+                        </form>
+                    </div>
+                    {/* newsletter  right side */}
+                    <div>
+                        <Lottie className="w-[300px]" animationData={newsLetterLottie} loop={true} />
+                    </div>
+                </div>
+            </section>
+
+
         </div>
     );
 };
