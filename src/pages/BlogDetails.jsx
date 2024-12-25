@@ -94,7 +94,7 @@ const BlogDetails = () => {
                     {/* conditionally rendering edit post button */}
                     {
                         user?.email === blogger_email && <div>
-                            <Link to={`/update-blog/${id}`} className="btn">Edit Post</Link>
+                            <Link to={`/update-blog/${id}`} className="btn outline-none border-none bg-[#009bff] hover:bg-[#0073bd] text-white !font-semibold ">Update Post</Link>
                         </div>
                     }
                 </div>
@@ -121,7 +121,7 @@ const BlogDetails = () => {
                                 <textarea name='comment' className="textarea textarea-bordered h-[150px]" placeholder="What are your thoughts?"></textarea>
                                 {/* comment button */}
                                 <div className="flex justify-end">
-                                    <button className="btn btn-primary">Post Comment</button>
+                                    <button className="btn outline-none border-none bg-[#009bff] hover:bg-[#0073bd] text-white !font-semibold ">Post Comment</button>
                                 </div>
 
                             </div>

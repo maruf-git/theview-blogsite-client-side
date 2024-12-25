@@ -36,61 +36,64 @@ const AllBlogs = () => {
     return (
         <div className="max-w-screen-xl mx-auto px-1">
             {/* filter and sorting  */}
-            <div className='flex flex-col md:flex-row justify-center items-center gap-5 my-10 '>
-                {/* category selection */}
-                <div>
+            <div className="flex flex-col md:flex-row justify-center items-center gap-6 my-8 px-4">
+                {/* Category Selection */}
+                <div className="relative">
                     <select
                         value={filter}
                         onChange={(event) => {
                             if (!event.target.value) {
-                                // console.log("filter null value called")
-                                setFilter('')
+                                setFilter('');
                             } else {
-                                setFilter(event.target.value)
+                                setFilter(event.target.value);
                             }
-
                         }}
-                        name='category'
-                        id='category'
-                        className='border p-4 rounded-lg '
+                        name="category"
+                        id="category"
+                        className="w-full md:w-64 px-4 py-3 border border-gray-300 rounded-lg text-gray-600 bg-white shadow-sm focus:ring focus:ring-blue-300 focus:outline-none"
                     >
-                        <option value=''>Filter By Category</option>
-                        <option value='Business'>Business</option>
-                        <option value='Entertainment'>Entertainment</option>
-                        <option value='Lifestyle'>Lifestyle</option>
-                        <option value='Science'>Science</option>
-                        <option value='Sports'>Sports</option>
-                        <option value='Technology'>Technology</option>
+                        <option value="">Filter By Category</option>
+                        <option value="Business">Business</option>
+                        <option value="Entertainment">Entertainment</option>
+                        <option value="Lifestyle">Lifestyle</option>
+                        <option value="Science">Science</option>
+                        <option value="Sports">Sports</option>
+                        <option value="Technology">Technology</option>
                     </select>
                 </div>
-                {/* search bar */}
-                <div>
-                    <div className='flex p-1 overflow-hidden border rounded-lg  focus-within:ring focus-within:ring-opacity-40 focus-within:border-blue-400 focus-within:ring-blue-300'>
-                        <input
-                            value={searchValue}
-                            onChange={(event) => setSearchValue(event.target.value)}
-                            className='px-6 py-2 text-gray-700 placeholder-gray-500 bg-white outline-none focus:placeholder-transparent'
-                            type='text'
-                            name='search'
-                            placeholder='Enter Job Title'
-                            aria-label='Enter Job Title'
-                        />
 
-                        <button onClick={handleSearch} className='px-1 md:px-4 py-3 text-sm font-medium tracking-wider text-gray-100 uppercase transition-colors duration-300 transform bg-gray-700 rounded-md hover:bg-gray-600 focus:bg-gray-600 focus:outline-none'>
-                            Search
-                        </button>
-                    </div>
+                {/* Search Bar */}
+                <div className="flex items-center w-full md:w-auto bg-white border border-gray-300 rounded-lg shadow-sm focus-within:ring focus-within:ring-blue-300">
+                    <input
+                        value={searchValue}
+                        onChange={(event) => setSearchValue(event.target.value)}
+                        className="flex-grow px-4 py-2 text-gray-700 placeholder-gray-400 rounded-l-lg focus:outline-none"
+                        type="text"
+                        name="search"
+                        placeholder="Search by title"
+                        aria-label="Search by title"
+                    />
+                    <button
+                        onClick={handleSearch}
+                        className="px-6 py-2 text-white bg-blue-500 rounded-r-lg hover:bg-blue-600 focus:ring focus:ring-blue-300 focus:outline-none"
+                    >
+                        Search
+                    </button>
                 </div>
 
-                {/* reset button */}
+                {/* Reset Button */}
                 <button
                     onClick={() => {
                         setSearchValue('');
                         setSearch('');
                         setFilter('');
                     }}
-                    className="btn">Reset</button>
+                    className="px-6 py-2 bg-gray-100 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-200 focus:ring focus:ring-gray-300 focus:outline-none shadow-sm"
+                >
+                    Reset
+                </button>
             </div>
+
             <div>
                 <div className="mb-10">
                     <h1 className="font-bold text-4xl pl-2 border-l-[5px] py-5">All Blogs</h1>

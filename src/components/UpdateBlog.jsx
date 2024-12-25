@@ -22,7 +22,7 @@ const UpdateBlog = () => {
 
     }, [axiosSecure, id])
 
-   
+
     // handle add post form 
     const handleSubmit = (event) => {
         event.preventDefault();
@@ -43,84 +43,113 @@ const UpdateBlog = () => {
                     toast.success("Blog Updated Successfully!");
                     navigate(`/blog/${id}`);
                 }
-                
+
             })
 
     }
     return (
-        <div>
-            {/* helmet */}
-            {/* <Helmet>
-                <title>Add Review - Chill Gamer</title>
-            </Helmet> */}
-            <div className={`hero bg-[rgb(228,235,242)] min-h-screen py-6 ${themeMode === "light" ? "" : "!bg-[#1d232a]"}`}>
-                <div className="hero-content w-[96%] sm:w-[700px]">
-                    <div className="card bg-base-100 w-full max-w-2xl shrink-0 shadow-2xl">
-
-                        <div >
-                            <h1 className="text-3xl md:text-5xl  font-bold text-center pt-8">Update Blog </h1>
-                        </div>
-
-                        <form onSubmit={handleSubmit} className="card-body grid grid-cols-2 gap-x-5">
-                            {/*title */}
-                            <div className="form-control col-span-2 sm:col-span-1">
-                                <label className="label" htmlFor="title">
-                                    <span className="label-text">Blog Title</span>
-                                </label>
-                                <input defaultValue={blog?.title} id='title' type="text" name="title" placeholder="blog title" className="input input-bordered" required />
-                            </div>
-                            {/* blog image url */}
-                            <div className="form-control col-span-2 sm:col-span-1">
-                                <label className="label" htmlFor="image">
-                                    <span className="label-text">Blog Image URL</span>
-                                </label>
-                                <input defaultValue={blog?.image} id='image' type="text" name="image" placeholder="image url" className="input input-bordered" required />
+        <div className={`min-h-screen py-10 ${themeMode === "light" ? "bg-gray-50" : "bg-gray-900"}`}>
+            <div className="max-w-3xl mx-auto px-4">
+                <div className={`bg-white shadow-lg rounded-lg overflow-hidden ${themeMode === "light" ? "" : "bg-gray-800 text-gray-100"}`}>
+                    <div className="py-8 px-6">
+                        <h1 className="text-3xl font-semibold text-center mb-6">Update Blog</h1>
+                        <form onSubmit={handleSubmit} className="space-y-6">
+                            {/* Blog Title */}
+                            <div>
+                                <label htmlFor="title" className="block text-sm font-medium mb-1">Blog Title</label>
+                                <input
+                                    defaultValue={blog?.title}
+                                    id="title"
+                                    type="text"
+                                    name="title"
+                                    placeholder="Enter blog title"
+                                    className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                    required
+                                />
                             </div>
 
-                            {/* category */}
-                            <div className="form-control col-span-2">
-                                <label className="label" htmlFor="category">
-                                    <span className="label-text">Category</span>
-                                </label>
-                                <select id='category' name="category" className="select select-bordered w-full ">
-                                    <option selected={blog?.category === "Business"} >Business</option>
-                                    <option selected={blog?.category === "Entertainment"} >Entertainment</option>
+                            {/* Blog Image URL */}
+                            <div>
+                                <label htmlFor="image" className="block text-sm font-medium mb-1">Blog Image URL</label>
+                                <input
+                                    defaultValue={blog?.image}
+                                    id="image"
+                                    type="url"
+                                    name="image"
+                                    placeholder="Enter image URL"
+                                    className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                    required
+                                />
+                            </div>
+
+                            {/* Category */}
+                            <div>
+                                <label htmlFor="category" className="block text-sm font-medium mb-1">Category</label>
+                                <select
+                                    id="category"
+                                    name="category"
+                                    className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                    required
+                                >
+                                    <option selected={blog?.category === "Business"}>Business</option>
+                                    <option selected={blog?.category === "Entertainment"}>Entertainment</option>
                                     <option selected={blog?.category === "Lifestyle"}>Lifestyle</option>
                                     <option selected={blog?.category === "Science"}>Science</option>
                                     <option selected={blog?.category === "Sports"}>Sports</option>
                                     <option selected={blog?.category === "Technology"}>Technology</option>
                                 </select>
                             </div>
-                            {/*Short Description */}
-                            <div className="form-control col-span-2">
-                                <label className="label" htmlFor="short_des">
-                                    <span className="label-text">Short Description</span>
-                                </label>
-                                <input defaultValue={blog?.short_des} id='short_des' name="short_des" type="text" placeholder="write short description" className="input input-bordered" required />
-                                {/* <textarea  className="textarea textarea-bordered" ></textarea> */}
+
+                            {/* Short Description */}
+                            <div>
+                                <label htmlFor="short_des" className="block text-sm font-medium mb-1">Short Description</label>
+                                <input
+                                    defaultValue={blog?.short_des}
+                                    id="short_des"
+                                    name="short_des"
+                                    type="text"
+                                    placeholder="Write a short description"
+                                    className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                    required
+                                />
                             </div>
-                            {/* Description */}
-                            <div className="form-control col-span-2">
-                                <label className="label" htmlFor="description">
-                                    <span className="label-text">Description</span>
-                                </label>
-                                <textarea defaultValue={blog?.description} id='description' name="description" className="textarea textarea-bordered" placeholder="Write detailed review"></textarea>
+
+                            {/* Detailed Description */}
+                            <div>
+                                <label htmlFor="description" className="block text-sm font-medium mb-1">Detailed Description</label>
+                                <textarea
+                                    defaultValue={blog?.description}
+                                    id="description"
+                                    name="description"
+                                    rows="5"
+                                    placeholder="Write detailed content for the blog"
+                                    className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                    required
+                                ></textarea>
                             </div>
-                            {/* error message print */}
-                            <div className="form-control">
-                                {
-                                    errorMessage && <p className="text-red-700">{errorMessage}</p>
-                                }
-                            </div>
-                            <div className="form-control mt-6 space-y-3 col-span-2">
-                                <button className="btn btn-primary">Update Blog</button>
+
+                            {/* Error Message */}
+                            {errorMessage && (
+                                <div>
+                                    <p className="text-red-500 text-center">{errorMessage}</p>
+                                </div>
+                            )}
+
+                            {/* Submit Button */}
+                            <div>
+                                <button
+                                    type="submit"
+                                    className="w-full bg-blue-500 text-white py-3 rounded-lg hover:bg-blue-600 transition duration-300"
+                                >
+                                    Update Blog
+                                </button>
                             </div>
                         </form>
-
                     </div>
                 </div>
             </div>
         </div>
+
     );
 };
 

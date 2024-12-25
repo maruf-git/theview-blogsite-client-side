@@ -120,17 +120,17 @@ const Home = () => {
                 </div>
             </section>
 
-            {/*sports,lifestyle, entertainment */}
+            {/*lifestyle,lifestyle, entertainment */}
             <section className="mt-20">
                 <div className="max-w-screen-xl mx-auto">
                     <div className="grid grid-cols-2 gap-5">
-                        {/* sports */}
+                        {/* lifestyle */}
                         <div className="">
                             <div className="mb-5">
-                                <h1 className="font-bold text-4xl pl-2 border-l-[5px] py-5">Sports</h1>
+                                <h1 className="font-bold text-4xl pl-2 border-l-[5px] py-5">Lifestyle</h1>
                             </div>
                             {
-                                blogs.filter((blog) => blog.category === "Sports")
+                                blogs.filter((blog) => blog.category === "Lifestyle")
                                     .slice(0, 6)
                                     .map((blog, idx) => <TwoColBlogCard key={blog._id} blog={blog} idx={idx}></TwoColBlogCard>)
                             }
