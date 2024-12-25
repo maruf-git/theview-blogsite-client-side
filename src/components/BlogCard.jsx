@@ -6,6 +6,7 @@ import { useContext } from "react";
 import { AuthContext } from "../providers/AuthProvider";
 import useAxiosSecure from "../hooks/useAxiosSecure";
 import toast from "react-hot-toast";
+import * as motion from "motion/react-client"
 /* eslint-disable react/prop-types */
 const BlogCard = ({ blog }) => {
     const { user } = useContext(AuthContext);
@@ -33,12 +34,17 @@ const BlogCard = ({ blog }) => {
         <div className="card card-compact bg-base-100 w-[410px]  rounded-none">
             {/* blog image */}
             <div >
+
                 {/* <Link to={`/blogs/${_id}`}> */}
-                <figure className="relative">
-                    <img
-                        className="h-[200px] w-full object-cover rounded-md"
+                <figure
+
+                    className="relative">
+                    <motion.img
+                        whileHover={{ scale: 1.2 }}
+                        className="h-[200px] w-full object-cover  overflow-hidden"
                         src={image}
                         alt={title} />
+                    {/* bookmark button */}
                     <FaBookmark
                         data-tooltip-id="my-tooltip" data-tooltip-content={`Add to Wishlist`}
                         onClick={handleAddToWishlist}
@@ -60,7 +66,7 @@ const BlogCard = ({ blog }) => {
             <p className="mb-2">{short_des.slice(0, 100)}...</p>
             {/* <div className="divider m-0"></div> */}
             <div className="flex flex-wrap justify-between items-center gap-2">
-            {/* bg-success  btn-success !text-white */}
+                {/* bg-success  btn-success !text-white */}
                 <Link to={`/blog/${_id}`} className="btn w-full bg-[#009bff] hover:bg-[#0073bd] text-white ">Details</Link>
                 {/* <button className="btn btn-sm btn-outline btn-primary w-full rounded-none">Wishlist</button> */}
             </div>
