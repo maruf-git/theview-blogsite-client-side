@@ -49,7 +49,7 @@ const BlogDetails = () => {
         const commentDetails = { comment, commenter: user?.displayName, commenter_email: user?.email, commenter_image: user?.photoURL, comment_time, blog_id: id };
 
         // posting commentDetails to the db
-        axios.post(`${import.meta.env.VITE_BASE_URI}/add-comment`, commentDetails)
+        axiosSecure.post(`${import.meta.env.VITE_BASE_URI}/add-comment`,commentDetails)
             .then(res => {
                 if (res.data.insertedId) {
                     toast.success('Comment Successful');
@@ -57,10 +57,10 @@ const BlogDetails = () => {
                     getAllComments();
                 }
             })
-            .catch(err => {
-                // console.log(err);
-                toast.error(err.message);
-            })
+            // .catch(err => {
+            //     console.log(err);
+            //     toast.error(err.message);
+            // })
     }
 
     if (loading) return <LoadingSpinner></LoadingSpinner>;

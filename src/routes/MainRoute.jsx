@@ -11,12 +11,13 @@ import Wishlist from "../pages/Wishlist";
 import PrivateRoute from "../routes/PrivateRoute";
 import BlogDetails from "../pages/BlogDetails";
 import UpdateBlog from "../components/UpdateBlog";
+import ScrollLinked from "../components/ScrollLinked";
 
 
 const MainRoute = createBrowserRouter([
   {
     path: "/",
-    element: <MainLayout></MainLayout>,
+    element: <ScrollLinked></ScrollLinked>,
     children: [
       {
         path: "/",
