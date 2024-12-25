@@ -30,8 +30,6 @@ const Register = () => {
             setValidationMessage("Password must be at least 6 characters");
             return;
         }
-        const uppercaseRegex = /[A-Z]/;
-        const lowercaseRegex = /[a-z]/;
         if (name.trim() === "") {
             setValidationMessage("Name can not be empty");
             return;
@@ -40,12 +38,24 @@ const Register = () => {
             setValidationMessage("Photo URL can not be empty");
             return;
         }
-        if (!lowercaseRegex.test(password)) {
-            setValidationMessage("Password must have at least one lowercase letter");
-            return;
-        }
+        const uppercaseRegex = /[A-Z]/;
+        const numberRegex = /\d/;
+        const specialRegex = /[^a-zA-Z0-9\s]/;
+        // const lowercaseRegex = /[a-z]/;
+        // if (!lowercaseRegex.test(password)) {
+        //     setValidationMessage("Password must have at least one lowercase letter");
+        //     return;
+        // }
         if (!uppercaseRegex.test(password)) {
             setValidationMessage("Password must have at least one uppercase letter");
+            return;
+        }
+        if (!specialRegex.test(password)) {
+            setValidationMessage("Password must have at least one special character");
+            return;
+        }
+        if (!numberRegex.test(password)) {
+            setValidationMessage("Password must have at least one number");
             return;
         }
         // creating user using email and password
@@ -129,7 +139,7 @@ const Register = () => {
                             <label className="label">
                                 <span className="label-text">Photo URL</span>
                             </label>
-                            <input type="text" name="photo_url" placeholder="photo URL" className="input input-bordered" required />
+                            <input type="url" name="photo_url" placeholder="photo URL" className="input input-bordered" required />
                         </div>
                         <div className="form-control relative">
                             <label className="label">

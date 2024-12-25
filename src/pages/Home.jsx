@@ -62,7 +62,7 @@ const Home = () => {
                         </div>
                         {/* join our community button */}
                         <div>
-                            <Link to='/register' className="btn outline-none border-none bg-[#009bff] hover:bg-[#0073bd] text-white !font-semibold uppercase tracking-wide">Join our community</Link>
+                            <Link to='/' className="btn outline-none border-none bg-[#009bff] hover:bg-[#0073bd] text-white !font-semibold uppercase tracking-wide">Join our community</Link>
                         </div>
                     </div>
                     {/* banner right side image content */}
