@@ -1,7 +1,7 @@
 import { createBrowserRouter } from "react-router-dom";
 import MainLayout from "../layouts/MainLayout";
 import Home from "../pages/Home";
-import ErrorPage from "../pages/ErrorPage";
+import NotFound from "../pages/NotFound";
 import Login from "../pages/Login";
 import Register from "../pages/Register";
 import AddBlog from "../pages/AddBlog";
@@ -65,8 +65,8 @@ const MainRoute = createBrowserRouter([
     ]
   },
   {
-    path: "/",
-    element: <ErrorPage></ErrorPage>
+    path: "*",
+    element: <NotFound></NotFound>
   }
 ]);
 

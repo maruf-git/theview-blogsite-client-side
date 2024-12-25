@@ -7,6 +7,7 @@ const MainLayout = () => {
         <div>
             {/* header section */}
             <header>
+                {/* navbar */}
                 <nav>
                     <Navbar></Navbar>
                 </nav>
@@ -16,7 +17,6 @@ const MainLayout = () => {
                 <div>
                     <Outlet></Outlet>
                 </div>
-
             </main>
             {/* footer section */}
             <footer>

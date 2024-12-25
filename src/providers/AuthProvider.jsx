@@ -41,7 +41,7 @@ const AuthProvider = ({ children }) => {
             console.log('CurrentUser-->', currentUser)
             // setUser(currentUser);
             // generate and delete token
-            if (currentUser) {
+            if (currentUser?.email) {
                 setUser(currentUser);
                 // generate and set the token to the browser cookie by sending post request
                 axios.post(`${import.meta.env.VITE_BASE_URI}/jwt`, { email: currentUser?.email }, { withCredentials: true })
