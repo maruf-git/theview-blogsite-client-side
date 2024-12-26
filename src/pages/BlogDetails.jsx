@@ -8,7 +8,7 @@ import Comment from "../components/Comment";
 import LoadingSpinner from "../components/LoadingSpinner";
 import { Helmet } from "react-helmet-async";
 import { ThemeContext } from "../providers/ThemeProvider";
-// import { format, parseISO } from "date-fns";
+import { format } from 'date-fns';
 
 const BlogDetails = () => {
     const { id } = useParams();
@@ -16,7 +16,7 @@ const BlogDetails = () => {
     const [blog, setBlog] = useState({});
     const [comments, setComments] = useState([]);
     const axiosSecure = useAxiosSecure();
-    const {themeMode}=useContext(ThemeContext);
+    const { themeMode } = useContext(ThemeContext);
 
     // get specific blog
     useEffect(() => {
@@ -94,7 +94,9 @@ const BlogDetails = () => {
                         </div>
                         <div>
                             <p className={`text-[#6B6B6B]  font-[500] text-base ${themeMode === "light" ? "" : "text-[rgb(166,173,187)]"}`}>{blogger_name}</p>
-                            <p className={`text-[#6B6B6B] text-[14px] ${themeMode === "light" ? "" : "text-[rgb(166,173,187)]"}`}>Published on {post_time}, Category: {category}</p>
+                            <p className={`text-[#6B6B6B] text-[14px] ${themeMode === "light" ? "" : "text-[rgb(166,173,187)]"}`}>Published on {format(new Date(post_time), "MMMM do, yyyy")}, Category: {category}</p>
+                            {/* format(new Date(mongoTimestamp), "MMMM do, yyyy") */}
+                            {/* mport { format } from 'date-fns'; */}
                         </div>
                     </div>
                     {/* conditionally rendering edit post button */}

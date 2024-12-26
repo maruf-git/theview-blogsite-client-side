@@ -4,6 +4,7 @@
 
 import { Link } from "react-router-dom";
 import * as motion from "motion/react-client"
+import { format } from 'date-fns';
 
 const TwoColBlogCard = ({ blog, idx }) => {
     const { title, image, _id, post_time } = blog;
@@ -21,7 +22,7 @@ const TwoColBlogCard = ({ blog, idx }) => {
             }
             <motion.div whileHover={{ scale: 1.02 }} className="">
                 {/* publishing time */}
-                <p className="">Published on {post_time}</p>
+                <p className="">Published on {format(new Date(post_time), "MMMM do, yyyy")}</p>
                 {/* title */}
                 <div >
                     <Link to={`/blog/${_id}`}><h2 className="card-title p-0 m-0 font-bold hover:text-blue-700 hover:underline ">{title}</h2></Link>
