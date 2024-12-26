@@ -2,6 +2,7 @@ import { useContext, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../providers/AuthProvider";
 import { FaEye, FaEyeSlash } from "react-icons/fa6";
+import toast from "react-hot-toast";
 // import { Helmet } from "react-helmet-async";
 
 
@@ -65,6 +66,7 @@ const Register = () => {
                 updateUserProfile(updateInfo)
                     .then(() => {
                         // setUser(result.user);
+                        toast.success('Registration Successful!');
                         console.log("redirect:", location?.state);
                         navigate(location?.state || '/');
                         // if (location && location.state && location.state.destination) {
@@ -89,6 +91,7 @@ const Register = () => {
         googleLogin()
             .then((result) => {
                 // setUser(result.user);
+                toast.success('Registration Successful');
                 console.log("redirect:", location?.state);
                 navigate(location?.state || '/');
                 // if (location && location.state && location.state.destination) {
@@ -109,68 +112,105 @@ const Register = () => {
     }
 
     return (
-        <div className="hero bg-[rgb(228,235,242)] min-h-screen py-6">
-            {/* <Helmet>
-                <title>Register - Discount Pro</title>
-            </Helmet> */}
-            <div className="hero-content sm:w-[500px]">
-                <div className="card bg-base-100 w-full max-w-xl shrink-0 shadow-2xl">
-                    <form onSubmit={handleSubmit} className="card-body pb-0">
-                        {/* register heading */}
-                        <div >
-                            <h1 className="text-3xl md:text-5xl  font-bold">Register Now!</h1>
-                        </div>
-                        {/* name */}
-                        <div className="form-control">
-                            <label className="label">
-                                <span className="label-text">Name</span>
-                            </label>
-                            <input type="text" name="name" placeholder="name" className="input input-bordered" required />
-                        </div>
-                        {/* email */}
-                        <div className="form-control">
-                            <label className="label">
-                                <span className="label-text">Email</span>
-                            </label>
-                            <input type="email" name="email" placeholder="email" className="input input-bordered" required />
-                        </div>
-                        {/* photo url */}
-                        <div className="form-control">
-                            <label className="label">
-                                <span className="label-text">Photo URL</span>
-                            </label>
-                            <input type="url" name="photo_url" placeholder="photo URL" className="input input-bordered" required />
-                        </div>
-                        <div className="form-control relative">
-                            <label className="label">
-                                <span className="label-text">Password</span>
-                            </label>
-                            <input type={`${showPassword ? "text" : "password"}`} name="password" placeholder="password" className="input input-bordered" required />
-                            {
-                                showPassword ? <FaEyeSlash onClick={handleShowPassword} className="absolute top-[55px] right-[30px]" /> : <FaEye onClick={handleShowPassword} className="absolute top-[55px] right-[30px]" />
-                            }
-                        </div>
-                        {
-                            validationMessage && <div className="form-control mt-6">
-                                <p className="font-semibold text-red-500">{validationMessage}</p>
-                            </div>
-                        }
-                        <div className="form-control mt-6 space-y-3">
-                            <button className="btn btn-primary">Register</button>
-                        </div>
-                    </form>
-                    <div className="card-body mt-0 pt-0">
-                        <div className="form-control space-y-3">
-                            <p className="text-center font-semibold">Or</p>
-                            <button onClick={handleGoogleLogin} className="btn btn-primary">Login with Google</button>
-                        </div>
-                        <div className="form-control">
-                            <p className="font-semibold ">Already have an Account? <Link to="/login" className="text-red-500 border-b-2 border-red-500">Login here!</Link></p>
-                        </div>
+        <div className="min-h-screen  flex items-center justify-center py-10">
+            <div className="bg-white shadow-lg rounded-lg max-w-md w-full p-6 sm:p-8">
+                <h1 className="text-3xl font-bold text-center text-[#009bff]">Register Now</h1>
+                <p className="text-center text-gray-600 mt-2">Create your account in seconds</p>
+                <form onSubmit={handleSubmit} className="mt-6 space-y-4">
+                    {/* Name */}
+                    <div>
+                        <label htmlFor="name" className="block text-sm font-medium text-gray-700">
+                            Name
+                        </label>
+                        <input
+                            type="text"
+                            name="name"
+                            id="name"
+                            placeholder="Your full name"
+                            className="mt-1 input input-bordered w-full"
+                            required
+                        />
                     </div>
+                    {/* Email */}
+                    <div>
+                        <label htmlFor="email" className="block text-sm font-medium text-gray-700">
+                            Email
+                        </label>
+                        <input
+                            type="email"
+                            name="email"
+                            id="email"
+                            placeholder="Your email address"
+                            className="mt-1 input input-bordered w-full"
+                            required
+                        />
+                    </div>
+                    {/* Photo URL */}
+                    <div>
+                        <label htmlFor="photo_url" className="block text-sm font-medium text-gray-700">
+                            Photo URL
+                        </label>
+                        <input
+                            type="url"
+                            name="photo_url"
+                            id="photo_url"
+                            placeholder="Your photo URL"
+                            className="mt-1 input input-bordered w-full"
+                            required
+                        />
+                    </div>
+                    {/* Password */}
+                    <div className="relative">
+                        <label htmlFor="password" className="block text-sm font-medium text-gray-700">
+                            Password
+                        </label>
+                        <input
+                            type={`${showPassword ? "text" : "password"}`}
+                            name="password"
+                            id="password"
+                            placeholder="Create a password"
+                            className="mt-1 input input-bordered w-full"
+                            required
+                        />
+                        <button
+                            type="button"
+                            onClick={handleShowPassword}
+                            className="absolute inset-y-0 right-3 top-[38px] text-gray-500"
+                            aria-label="Toggle Password Visibility"
+                        >
+                            {showPassword ? <FaEyeSlash /> : <FaEye />}
+                        </button>
+                    </div>
+                    {/* Validation Message */}
+                    {validationMessage && (
+                        <p className="text-red-500 font-semibold text-sm text-center">{validationMessage}</p>
+                    )}
+                    {/* Register Button */}
+                    <button className="btn w-full mt-4 outline-none border-none bg-[#009bff] hover:bg-[#0073bd] text-white !font-semibold">Register</button>
+                </form>
+                {/* Or Separator */}
+                <div className="flex items-center my-4">
+                    <hr className="flex-1 border-gray-300" />
+                    <span className="mx-4 text-gray-500">OR</span>
+                    <hr className="flex-1 border-gray-300" />
                 </div>
+                {/* Google Login */}
+                <button
+                    onClick={handleGoogleLogin}
+                    className="btn w-full outline-none border-none bg-[#009bff] hover:bg-[#0073bd] text-white !font-semibold"
+                >
+                    Login with Google
+                </button>
+                {/* Redirect to Login */}
+                <p className="text-center text-gray-600 mt-4">
+                    Already have an account?{" "}
+                    <Link to="/login" className="text-[#009bff] font-semibold hover:underline">
+                        Login here
+                    </Link>
+                </p>
             </div>
         </div>
+
     );
 };
 
