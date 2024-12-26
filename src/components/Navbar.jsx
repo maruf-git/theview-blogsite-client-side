@@ -25,14 +25,14 @@ const Navbar = () => {
     return (
         <div className={`shadow-sm ${themeMode === "light" ? "bg-white text-gray-800" : "bg-gray-900 text-white"}`}>
             {/* Navbar */}
-            <div className="max-w-screen-xl mx-auto  ">
-                <div className="navbar flex justify-between items-center">
+            <div className="max-w-screen-xl mx-auto px-4 2xl:px-4">
+                <div className="navbar flex justify-between items-center !mx-0 !px-0">
                     {/* Navbar Start */}
                     <div className="navbar-start flex items-center gap-4">
                         <div className="dropdown lg:hidden">
                             <button
                                 tabIndex={0}
-                                className="btn btn-ghost px-2 py-1">
+                                className="btn btn-ghost !px-0 py-1">
                                 <svg
                                     xmlns="http://www.w3.org/2000/svg"
                                     className="h-5 w-5"
@@ -69,7 +69,7 @@ const Navbar = () => {
                         </ul>
                     </div>
                     {/* Navbar End */}
-                    <div className="navbar-end flex items-center gap-4">
+                    <div className="navbar-end flex items-center gap-1 sm:gap-3">
                         {/* Theme Toggle Button */}
                         <div>
                             {themeMode === "light" ? (
@@ -87,7 +87,7 @@ const Navbar = () => {
 
                         {/* User Authentication */}
                         {user ? (
-                            <div className="flex items-center gap-3">
+                            <div className="flex items-center gap-1 sm:gap-3">
                                 <div
                                     data-tooltip-id="my-tooltip"
                                     data-tooltip-content={`${user.displayName}`}
@@ -99,16 +99,16 @@ const Navbar = () => {
                                 </div>
                                 <button
                                     onClick={handleLogout}
-                                    className="btn outline-none border-none bg-[#009bff] hover:bg-[#0073bd] text-white !font-semibold ">
+                                    className="btn btn-sm  outline-none border-none bg-[#009bff] hover:bg-[#0073bd] text-white !font-semibold ">
                                     Log out
                                 </button>
                             </div>
                         ) : (
                             <div className="flex flex-col sm:flex-row items-center gap-3">
 
-                                <Link to="/register" className="btn outline-none border-none bg-[#009bff] hover:bg-[#0073bd] text-white !font-semibold">Register</Link>
+                                <Link to="/register" className="btn btn-sm outline-none border-none bg-[#009bff] hover:bg-[#0073bd] text-white !font-semibold">Register</Link>
 
-                                <Link to="/login" className="btn outline-none border-none bg-[#009bff] hover:bg-[#0073bd] text-white !font-semibold ">Log in</Link>
+                                <Link to="/login" className="btn btn-sm outline-none border-none bg-[#009bff] hover:bg-[#0073bd] text-white !font-semibold ">Log in</Link>
                             </div>
                         )}
                     </div>
