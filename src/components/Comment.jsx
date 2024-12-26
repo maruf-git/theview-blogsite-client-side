@@ -2,6 +2,7 @@
 
 import { useContext } from "react";
 import { ThemeContext } from "../providers/ThemeProvider";
+import { format } from 'date-fns';
 
 const Comment = ({ comment }) => {
     const {themeMode}=useContext(ThemeContext);
@@ -17,7 +18,7 @@ const Comment = ({ comment }) => {
                 <div>
                     <p className={`text-[#6B6B6B] font-[500] text-base] ${themeMode === "light" ? "" : "text-[rgb(166,173,187)]"}`}>{commenter}</p>
                     
-                    <p className={`text-[#6B6B6B] text-[14px] dark:text-[rgb(166,173,187)] ${themeMode === "light" ? "" : "text-[rgb(166,173,187)]"}`}>Commented on {comment_time}</p>
+                    <p className={`text-[#6B6B6B] text-[14px] dark:text-[rgb(166,173,187)] ${themeMode === "light" ? "" : "text-[rgb(166,173,187)]"}`}>Commented on {format(new Date(comment_time), "MMMM do, yyyy")}</p>
                 </div>
             </div>
             <p className="">{comment.comment}</p>
