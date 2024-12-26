@@ -111,7 +111,7 @@ const Home = () => {
             </section>
 
             {/* technology blogs section */}
-            <section className={`mt-20 px-4 2xl:px-0 bg-[#F2F1ED] ${themeMode === "light" ? "" : "bg-gray-900 text-[rgb(166,173,187)]"}`}>
+            <section id="technology" className={`mt-20 px-4 2xl:px-0 bg-[#F2F1ED] ${themeMode === "light" ? "" : "bg-gray-900 text-[rgb(166,173,187)]"}`}>
 
                 <div className="max-w-screen-xl mx-auto py-14 ">
                     <div className="mb-5">
@@ -132,7 +132,7 @@ const Home = () => {
                 <div className="max-w-screen-xl mx-auto">
                     <div className="grid gap-10 md:grid-cols-2 md:gap-5">
                         {/* lifestyle */}
-                        <div className="">
+                        <div id="lifestyle" className="">
                             <div className="mb-5">
                                 <h1 className="font-bold text-4xl pl-2 border-l-[5px] py-5">Lifestyle</h1>
                             </div>
@@ -143,7 +143,7 @@ const Home = () => {
                             }
                         </div>
                         {/* Entertainment */}
-                        <div className="">
+                        <div id="entertainment" className="">
                             <div className="mb-5">
                                 <h1 className="font-bold text-4xl pl-2 border-l-[5px] py-5">Entertainment</h1>
                             </div>
@@ -166,7 +166,7 @@ const Home = () => {
                 <div className="max-w-screen-xl mx-auto">
                     <div className="grid gap-10 md:grid-cols-2 md:gap-5">
                         {/* Science */}
-                        <div className="">
+                        <div id="science" className="">
                             <div className="mb-5">
                                 <h1 className="font-bold text-4xl pl-2 border-l-[5px] py-5">Science</h1>
                             </div>
@@ -177,7 +177,7 @@ const Home = () => {
                             }
                         </div>
                         {/* Business */}
-                        <div className="">
+                        <div id="business" className="">
                             <div className="mb-5">
                                 <h1 className="font-bold text-4xl pl-2 border-l-[5px] py-5">Business</h1>
                             </div>

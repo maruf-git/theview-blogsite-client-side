@@ -19,13 +19,13 @@ const Footer = () => {
                                 <Link to="/all-blogs" className="hover:text-white">All Blogs</Link>
                             </li>
                             <li>
-                                <Link to="/categories" className="hover:text-white">Categories</Link>
+                                <Link to="/" className="hover:text-white">Categories</Link>
                             </li>
                             <li>
-                                <Link to="/about" className="hover:text-white">About Us</Link>
+                                <Link to="/" className="hover:text-white">About Us</Link>
                             </li>
                             <li>
-                                <Link to="/contact" className="hover:text-white">Contact</Link>
+                                <Link to="/" className="hover:text-white">Contact</Link>
                             </li>
                         </ul>
                     </div>
@@ -42,22 +42,19 @@ const Footer = () => {
                     <div>
                         <h3 className="text-lg font-bold text-white mb-4">Popular Tags</h3>
                         <div className="flex flex-wrap gap-2">
-                            <Link to='/' className="bg-gray-800 text-sm px-3 py-1 rounded-full hover:bg-gray-700">
+                            <Link to='#technology' className="bg-gray-800 text-sm px-3 py-1 rounded-full hover:bg-gray-700">
                                 #Technology
                             </Link>
-                            <Link  to='/' className="bg-gray-800 text-sm px-3 py-1 rounded-full hover:bg-gray-700">
+                            <Link  to='#lifestyle' className="bg-gray-800 text-sm px-3 py-1 rounded-full hover:bg-gray-700">
                                 #Lifestyle
                             </Link>
-                            <Link  to='/' className="bg-gray-800 text-sm px-3 py-1 rounded-full hover:bg-gray-700">
-                                #Travel
+                            <Link  to='#entertainment' className="bg-gray-800 text-sm px-3 py-1 rounded-full hover:bg-gray-700">
+                                #Entertainment
                             </Link>
-                            <Link  to='/' className="bg-gray-800 text-sm px-3 py-1 rounded-full hover:bg-gray-700">
-                                #Education
+                            <Link to='#science' className="bg-gray-800 text-sm px-3 py-1 rounded-full hover:bg-gray-700">
+                                #Science
                             </Link>
-                            <Link to='/' className="bg-gray-800 text-sm px-3 py-1 rounded-full hover:bg-gray-700">
-                                #Health
-                            </Link>
-                            <Link  to='/' className="bg-gray-800 text-sm px-3 py-1 rounded-full hover:bg-gray-700">
+                            <Link  to='#business' className="bg-gray-800 text-sm px-3 py-1 rounded-full hover:bg-gray-700">
                                 #Business
                             </Link>
                         </div>
