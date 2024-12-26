@@ -175,7 +175,7 @@ const Register = () => {
                         <button
                             type="button"
                             onClick={handleShowPassword}
-                            className="absolute inset-y-0 right-3 top-[38px] text-gray-500"
+                            className="absolute inset-y-0 right-3 top-[25px] text-gray-500"
                             aria-label="Toggle Password Visibility"
                         >
                             {showPassword ? <FaEyeSlash /> : <FaEye />}

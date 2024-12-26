@@ -3,6 +3,7 @@ import { FaEye, FaEyeSlash } from "react-icons/fa6";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../providers/AuthProvider";
 import axios from "axios";
+import toast from "react-hot-toast";
 // import { Helmet } from "react-helmet-async";
 
 
@@ -22,10 +23,11 @@ const Login = () => {
         userLogin(email, password)
             .then(res => {
                 setUser(res.user);
-                console.log("redirect:", location?.state);
+                // console.log("redirect:", location?.state);
                 axios.post(`${import.meta.env.VITE_BASE_URI}/jwt`, { email: res.user?.email }, { withCredentials: true })
                     .then(res => {
                         console.log("token creation successful.", res.data);
+                        toast.success('Login successful');
                         navigate(location?.state || '/');
                     })
             })
@@ -48,7 +50,8 @@ const Login = () => {
 
                 axios.post(`${import.meta.env.VITE_BASE_URI}/jwt`, { email: result.user?.email }, { withCredentials: true })
                     .then(res => {
-                        console.log("token creation successful.", res.data);
+                        // console.log("token creation successful.", res.data);
+                        toast.success('Login successful');
                         navigate(location?.state || '/');
                     })
 
@@ -94,12 +97,12 @@ const Login = () => {
                         {showPassword ? (
                             <FaEyeSlash
                                 onClick={handleShowPassword}
-                                className="absolute top-1/2 right-3 transform -translate-y-1/2 text-gray-500 cursor-pointer"
+                                className="absolute top-[35px] right-3   text-gray-500 cursor-pointer"
                             />
                         ) : (
                             <FaEye
                                 onClick={handleShowPassword}
-                                className="absolute top-1/2 right-3 transform -translate-y-1/2 text-gray-500 cursor-pointer"
+                                className="absolute top-[35px] right-3 text-gray-500 cursor-pointer"
                             />
                         )}
                     </div>
