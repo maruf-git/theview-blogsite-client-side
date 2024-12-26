@@ -215,6 +215,39 @@ const Home = () => {
                 </div>
             </section>
 
+            {/* FAQ section */}
+            <section className={`bg-[rgb(233,239,245)] px-4 2xl:px-0 ${themeMode === "light" ? "" : " !bg-[#1c2229] !text-[#a6adbb]"}`}>
+            {/* 101827 */}
+                <div className={`max-w-screen-xl mx-auto py-10 lg:py-20 flex flex-col gap-10 `}>
+                    <div>
+                        <h1 className="text-2xl md:text-3xl font-bold text-center">Frequently Asked Questions</h1>
+                    </div>
+                    {/* accordion */}
+                    <div className={`space-y-3 ${themeMode === "light" ? "" : " !bg-[#101827] !text-[#a6adbb]"}`}>
+                        <div className={`collapse collapse-arrow bg-white ${themeMode === "light" ? "" : " !bg-[#101827] !text-[#a6adbb]"}`}>
+                            <input type="radio" name="my-accordion-2" defaultChecked />
+                            <div className="collapse-title text-[18px] md:text-xl font-medium">What is this platform about?</div>
+                            <div className="collapse-content">
+                                <p>This is a community-driven blog platform where users can create an account to post their own blogs, comment on others' content, and engage with like-minded individuals.</p>
+                            </div>
+                        </div>
+                        <div className={`collapse collapse-arrow bg-white ${themeMode === "light" ? "" : " !bg-[#101827] !text-[#a6adbb]"}`}>
+                            <input type="radio" name="my-accordion-2" />
+                            <div className="collapse-title text-[18px] md:text-xl font-medium">Who can post blogs on this site?</div>
+                            <div className="collapse-content">
+                                <p>Anyone with a registered account can post blogs. Whether you're a seasoned writer or just starting, our platform welcomes all voices!</p>
+                            </div>
+                        </div>
+                        <div className={`collapse collapse-arrow bg-white ${themeMode === "light" ? "" : " !bg-[#101827] !text-[#a6adbb]"}`}>
+                            <input type="radio" name="my-accordion-2" />
+                            <div className="collapse-title text-[18px] md:text-xl font-medium">What types of blogs are allowed?</div>
+                            <div className="collapse-content">
+                                <p>We encourage blogs on a wide range of topics, but they must comply with our content guidelines to ensure a safe and respectful environment for all users..</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
 
         </div>
     );
