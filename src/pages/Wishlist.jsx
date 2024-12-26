@@ -47,7 +47,7 @@ const WishList = () => {
     if (loading) return <LoadingSpinner></LoadingSpinner>
 
     return (
-        <div className="max-w-screen-xl mx-auto px-1">
+        <div className="max-w-screen-xl mx-auto px-4 2xl:px-0">
             <div className="my-20">
                 <div className="mb-10">
                     <h1 className="font-bold text-4xl pl-2 border-l-[5px] py-5">Watchlist Blogs</h1>
