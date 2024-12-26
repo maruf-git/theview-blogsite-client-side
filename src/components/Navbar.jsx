@@ -30,7 +30,7 @@ const Navbar = () => {
     return (
         <div className={`shadow-sm ${themeMode === "light" ? "bg-white text-gray-800" : "bg-gray-900 text-white"}`}>
             {/* Navbar */}
-            <div className="max-w-screen-xl mx-auto px-4 2xl:px-4">
+            <div className="max-w-screen-xl mx-auto px-4 2xl:px-0">
                 <div className="navbar flex justify-between items-center !mx-0 !px-0">
                     {/* Navbar Start */}
                     <div className="navbar-start flex items-center gap-4">
