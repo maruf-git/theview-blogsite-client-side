@@ -63,13 +63,13 @@ const UpdateBlog = () => {
 
     }
     return (
-        <div className={`min-h-screen py-10 ${themeMode === "light" ? "bg-gray-50" : "bg-gray-900"}`}>
+        <div className={`min-h-screen py-10`}>
             <Helmet>
                 <title>Update Blog - TheView</title>
             </Helmet>
             <div className="max-w-3xl mx-auto px-4">
-                <div className={`bg-white shadow-lg rounded-lg overflow-hidden ${themeMode === "light" ? "" : "bg-gray-800 text-gray-100"}`}>
-                    <div className="py-8 px-6">
+                <div className={`bg-white shadow-lg rounded-lg overflow-hidden`}>
+                    <div className={`py-8 px-6 ${themeMode === "light" ? "" : "bg-gray-900 text-[rgb(166,173,187)]"}`}>
                         <h1 className="text-3xl font-semibold text-center mb-6">Update Blog</h1>
                         <form onSubmit={handleSubmit} className="space-y-6">
                             {/* Blog Title */}

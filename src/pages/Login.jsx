@@ -4,6 +4,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../providers/AuthProvider";
 import axios from "axios";
 import toast from "react-hot-toast";
+import { ThemeContext } from "../providers/ThemeProvider";
 // import { Helmet } from "react-helmet-async";
 
 
@@ -14,6 +15,7 @@ const Login = () => {
     const [errorMessage, setErrorMessage] = useState("");
     const { userLogin, setUser, googleLogin } = useContext(AuthContext);
     const location = useLocation();
+    const {themeMode}=useContext(ThemeContext);
 
     const handleSubmit = (event) => {
         event.preventDefault();
@@ -64,14 +66,14 @@ const Login = () => {
     }
 
     return (
-        <div className="min-h-screen  flex items-center justify-center p-4">
-            <div className="w-full max-w-md bg-white rounded-lg shadow-lg p-8">
+        <div className={`min-h-screen  flex items-center justify-center p-4 `}>
+            <div className={`w-full max-w-md bg-white rounded-lg shadow-lg p-8 ${themeMode === "light" ? "" : "!bg-gray-900 text-[rgb(166,173,187)]"}`}>
                 <h2 className="text-3xl font-bold text-center text-[#009bff] ">Login</h2>
                 <p className="text-center text-gray-500 mt-2">Access your account</p>
-                <form onSubmit={handleSubmit} className="mt-6 space-y-4">
+                <form onSubmit={handleSubmit} className={`mt-6 space-y-4 ${themeMode === "light" ? "" : " text-[rgb(166,173,187)]"}`}>
                     {/* Email */}
                     <div>
-                        <label htmlFor="email" className="block text-sm font-medium text-gray-700">
+                        <label htmlFor="email" className={`block text-sm font-medium text-gray-700 ${themeMode === "light" ? "" : "!bg-gray-900 text-[rgb(166,173,187)]"}`}>
                             Email
                         </label>
                         <input
@@ -84,7 +86,7 @@ const Login = () => {
                     </div>
                     {/* Password */}
                     <div className="relative">
-                        <label htmlFor="password" className="block text-sm font-medium text-gray-700">
+                        <label htmlFor={`password" className="block text-sm font-medium  text-gray-700 ${themeMode === "light" ? "" : "!bg-gray-900 text-[rgb(166,173,187)]"}`}>
                             Password
                         </label>
                         <input
@@ -121,7 +123,7 @@ const Login = () => {
                     </div>
                 </form>
                 <div className="mt-6">
-                    <p className="text-center text-gray-600">Or login with</p>
+                    <p className={`text-center text-gray-600 mb-5 ${themeMode === "light" ? "" : "!bg-gray-900 text-[rgb(166,173,187)]"}`}>Or login with</p>
                     <button
                         onClick={handleGoogleLogin}
                         className="btn w-full outline-none border-none bg-[#009bff] hover:bg-[#0073bd] text-white !font-semibold"
@@ -130,7 +132,7 @@ const Login = () => {
                     </button>
                 </div>
                 <div className="mt-4 text-center">
-                    <p className="text-sm text-gray-600">
+                    <p className={`text-sm text-gray-600 ${themeMode === "light" ? "" : "!bg-gray-900 text-[rgb(166,173,187)]"}`}>
                         Don't have an account?{" "}
                         <Link
                             to="/register"

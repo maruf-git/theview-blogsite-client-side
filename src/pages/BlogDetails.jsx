@@ -7,6 +7,7 @@ import toast from "react-hot-toast";
 import Comment from "../components/Comment";
 import LoadingSpinner from "../components/LoadingSpinner";
 import { Helmet } from "react-helmet-async";
+import { ThemeContext } from "../providers/ThemeProvider";
 // import { format, parseISO } from "date-fns";
 
 const BlogDetails = () => {
@@ -15,6 +16,7 @@ const BlogDetails = () => {
     const [blog, setBlog] = useState({});
     const [comments, setComments] = useState([]);
     const axiosSecure = useAxiosSecure();
+    const {themeMode}=useContext(ThemeContext);
 
     // get specific blog
     useEffect(() => {
@@ -72,27 +74,27 @@ const BlogDetails = () => {
     }
 
     return (
-        <div className="max-w-screen-md mx-auto mt-10 mb-20 md:my-20 px-4 lg:px-0">
+        <div className={`max-w-screen-md mx-auto mt-10 mb-20 md:my-20 px-4 lg:px-0 `}>
             <Helmet>
                 <title>{title} - TheView</title>
             </Helmet>
-            <div className="space-y-6">
+            <div className={`space-y-6 ${themeMode === "light" ? "" : "text-[rgb(166,173,187)]"}`}>
                 {/* blog title */}
-                <h1 className="text-[#242424] font-bold text-4xl">{title}</h1>
+                <h1 className={`"text-[#242424] font-bold text-4xl ${themeMode === "light" ? "" : "text-[rgb(166,173,187)]"}"`}>{title}</h1>
                 {/* blog short description */}
-                <p className="text-[#6B6B6B] font-semibold text-xl">{short_des}</p>
+                <p className={`"text-[#6B6B6B] font-semibold text-xl" ${themeMode === "light" ? "" : "text-[rgb(166,173,187)]"}`}>{short_des}</p>
                 {/* blogger details and update blog*/}
                 <div className="flex justify-between items-center">
                     {/* blogger details */}
-                    <div className="flex gap-3 items-center">
+                    <div className={`flex gap-3 items-center ${themeMode === "light" ? "" : "text-[rgb(166,173,187)]"}`}>
                         <div className="avatar">
                             <div className="w-14 rounded-full">
                                 <img referrerPolicy="no-referrer" src={blogger_image} />
                             </div>
                         </div>
                         <div>
-                            <p className="text-[#6B6B6B] font-[500] text-base">{blogger_name}</p>
-                            <p className="text-[#6B6B6B] text-[14px]">Published on {post_time}, Category: {category}</p>
+                            <p className={`text-[#6B6B6B]  font-[500] text-base ${themeMode === "light" ? "" : "text-[rgb(166,173,187)]"}`}>{blogger_name}</p>
+                            <p className={`text-[#6B6B6B] text-[14px] ${themeMode === "light" ? "" : "text-[rgb(166,173,187)]"}`}>Published on {post_time}, Category: {category}</p>
                         </div>
                     </div>
                     {/* conditionally rendering edit post button */}
@@ -110,14 +112,14 @@ const BlogDetails = () => {
                 {/* <p className="text-[20px] text-[#242424]">{description}</p> */}
                 {description &&
                     description.split('\n').map((paragraph, index) => (
-                        <p className="text-[20px] text-[#242424]" key={index}>{paragraph}</p>
+                        <p className={`text-[20px] text-[#242424] ${themeMode === "light" ? "" : "text-[rgb(166,173,187)]"}`} key={index}>{paragraph}</p>
                     ))
                 }
 
                 {/* comments section*/}
                 <div className="!mt-20 !mb-10">
                     {/* comment box */}
-                    <p className="text-[#242424] text-2xl font-semibold my-5">Post a comment</p>
+                    <p className={`text-[#242424] text-2xl font-semibold my-5 ${themeMode === "light" ? "" : "text-[rgb(166,173,187)]"}`}>Post a comment</p>
                     {
                         user?.email !== blogger_email && <form onSubmit={handleComment} className="mb-10" >
                             <div className="flex flex-col gap-5">
@@ -133,13 +135,13 @@ const BlogDetails = () => {
                     }
                     {/* no comment box for blogger */}
                     {
-                        user?.email === blogger_email && <div><p className="text-[20px] text-[#242424] my-3">Can not comment on own blog.</p></div>
+                        user?.email === blogger_email && <div><p className={`text-[20px] text-[#242424] my-3  ${themeMode === "light" ? "" : "text-[rgb(166,173,187)]"}`}>Can not comment on own blog.</p></div>
                     }
                     {/* all comments */}
                     <div className="!my-20 space-y-5">
-                        <h3 className="text-[#242424] text-2xl font-semibold">Comments({comments.length})</h3>
+                        <h3 className={`text-[#242424] text-2xl font-semibold ${themeMode === "light" ? "" : "text-[rgb(166,173,187)]"}`}>Comments({comments.length})</h3>
                         {
-                            comments.length === 0 && user?.email !== blogger_email && <p className="text-[20px] text-[#242424] ">Be the first person to comment on this blog!</p>
+                            comments.length === 0 && user?.email !== blogger_email && <p className={`text-[20px] text-[#242424] ${themeMode === "light" ? "" : "text-[rgb(166,173,187)]"}`}>Be the first person to comment on this blog!</p>
                         }
                         {
                             comments.map(comment => <Comment key={comment._id} comment={comment}></Comment>)

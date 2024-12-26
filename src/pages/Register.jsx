@@ -3,6 +3,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../providers/AuthProvider";
 import { FaEye, FaEyeSlash } from "react-icons/fa6";
 import toast from "react-hot-toast";
+import { ThemeContext } from "../providers/ThemeProvider";
 // import { Helmet } from "react-helmet-async";
 
 
@@ -12,6 +13,7 @@ const Register = () => {
     const [validationMessage, setValidationMessage] = useState("");
     const [showPassword, setShowPassword] = useState(false);
     const location = useLocation();
+    const {themeMode}=useContext(ThemeContext);
 
 
     const handleSubmit = (event) => {
@@ -113,10 +115,10 @@ const Register = () => {
 
     return (
         <div className="min-h-screen  flex items-center justify-center py-10">
-            <div className="bg-white shadow-lg rounded-lg max-w-md w-full p-6 sm:p-8">
+            <div className={`bg-white shadow-lg rounded-lg max-w-md w-full p-6 sm:p-8 ${themeMode === "light" ? "" : "!bg-gray-900 text-[rgb(166,173,187)]"}`}>
                 <h1 className="text-3xl font-bold text-center text-[#009bff]">Register Now</h1>
                 <p className="text-center text-gray-600 mt-2">Create your account in seconds</p>
-                <form onSubmit={handleSubmit} className="mt-6 space-y-4">
+                <form onSubmit={handleSubmit} className={`mt-6 space-y-4 ${themeMode === "light" ? "" : "!bg-gray-900 text-[rgb(166,173,187)]"}`}>
                     {/* Name */}
                     <div>
                         <label htmlFor="name" className="block text-sm font-medium text-gray-700">

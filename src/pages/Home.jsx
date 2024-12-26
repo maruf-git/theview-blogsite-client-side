@@ -11,10 +11,11 @@ import toast from "react-hot-toast";
 import TechnologyBlogCard from "../components/TechnologyBlogCard";
 import TwoColBlogCard from "../components/TwoColBlogCard";
 import { Helmet } from "react-helmet-async";
+import { ThemeContext } from "../providers/ThemeProvider";
 
 
 const Home = () => {
-    const { loading, user } = useContext(AuthContext);
+    const {themeMode}=useContext(ThemeContext)
     const [recentBlogs, setRecentBlogs] = useState([]);
     const [blogs, setBlogs] = useState([]);
     useEffect(() => {
@@ -110,7 +111,7 @@ const Home = () => {
             </section>
 
             {/* technology blogs section */}
-            <section className="mt-20 px-4 2xl:px-0 bg-[#F2F1ED]">
+            <section className={`mt-20 px-4 2xl:px-0 bg-[#F2F1ED] ${themeMode === "light" ? "" : "bg-gray-900 text-[rgb(166,173,187)]"}`}>
 
                 <div className="max-w-screen-xl mx-auto py-14 ">
                     <div className="mb-5">
@@ -162,7 +163,7 @@ const Home = () => {
 
             {/* newsletter section */}
             <section className="my-20 py-10 px-4 2xl:px-0">
-                <div className="max-w-screen-xl mx-auto p-10 bg-[rgb(229,246,255)] rounded-3xl flex flex-col justify-center items-center gap-5 md:flex-row md:justify-between shadow-xl">
+                <div className={`max-w-screen-xl mx-auto p-10 bg-[rgb(229,246,255)] ${themeMode === "light" ? "" : "bg-gray-900 text-[rgb(166,173,187)]"} rounded-3xl flex flex-col justify-center items-center gap-5 md:flex-row md:justify-between shadow-xl`}>
                     {/* newsletter left side*/}
                     <div className="flex flex-col gap-6 ">
                         <h1 className="text-2xl md:text-3xl font-bold">Stay Connected & Get The Trending Updates</h1>

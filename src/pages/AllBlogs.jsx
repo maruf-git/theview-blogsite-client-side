@@ -4,6 +4,7 @@ import BlogCard from "../components/BlogCard";
 import { AuthContext } from "../providers/AuthProvider";
 import LoadingSpinner from '../components/LoadingSpinner'
 import { Helmet } from "react-helmet-async";
+import { ThemeContext } from "../providers/ThemeProvider";
 
 
 const AllBlogs = () => {
@@ -12,6 +13,8 @@ const AllBlogs = () => {
     const [filter, setFilter] = useState('');
     const [search, setSearch] = useState('');
     const [searchValue, setSearchValue] = useState('');
+    const { themeMode } = useContext(ThemeContext);
+
     useEffect(() => {
         axios.get(`${import.meta.env.VITE_BASE_URI}/blogs?filter=${filter}&search=${search}`)
             .then(res => {
@@ -40,7 +43,7 @@ const AllBlogs = () => {
                 <title>All Blogs - TheView</title>
             </Helmet>
             {/* filter and sorting  */}
-            <div className="flex flex-col gap-5 sm:flex-row justify-center items-center sm:gap-3 md:gap-6 my-8 ">
+            <div className={`flex flex-col gap-5 sm:flex-row justify-center items-center sm:gap-3 md:gap-6 my-8  `}>
                 {/* Category Selection */}
                 <div className="relative">
                     <select
@@ -54,7 +57,7 @@ const AllBlogs = () => {
                         }}
                         name="category"
                         id="category"
-                        className="w-full sm:w-40 md:w-48 lg:w-64 px-4 py-3 border border-gray-300 rounded-lg text-gray-600 bg-white shadow-sm focus:ring focus:ring-blue-300 focus:outline-none"
+                        className={`w-full sm:w-40 md:w-48 lg:w-64 px-4 py-3 border border-gray-300 rounded-lg text-gray-600 bg-white shadow-sm focus:ring focus:ring-blue-300 focus:outline-none `}
                     >
                         <option value="">Filter By Category</option>
                         <option value="Business">Business</option>

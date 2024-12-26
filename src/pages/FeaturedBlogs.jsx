@@ -65,7 +65,7 @@ const FeaturedBlogs = () => {
             <Helmet>
                 <title>Featured Blogs - TheView</title>
             </Helmet>
-            <div className="my-10">
+            <div className="mt-10 mb-44">
                 <div>
                     <h1 className="font-bold text-4xl pl-2 border-l-[5px] py-5">Featured Blogs</h1>
                 </div>
