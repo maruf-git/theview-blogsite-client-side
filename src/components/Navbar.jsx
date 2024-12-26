@@ -108,7 +108,7 @@ const Navbar = () => {
 
                                 <Link to="/register" className="btn btn-sm outline-none border-none bg-[#009bff] hover:bg-[#0073bd] text-white !font-semibold">Register</Link>
 
-                                <Link to="/login" className="btn btn-sm outline-none border-none bg-[#009bff] hover:bg-[#0073bd] text-white !font-semibold ">Log in</Link>
+                                <Link to="/login" className="btn w-full sm:w-auto btn-sm outline-none border-none bg-[#009bff] hover:bg-[#0073bd] text-white !font-semibold ">Log in</Link>
                             </div>
                         )}
                     </div>

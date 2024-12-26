@@ -34,9 +34,9 @@ const AllBlogs = () => {
     if (loading) return <LoadingSpinner></LoadingSpinner>;
 
     return (
-        <div className="max-w-screen-xl mx-auto px-1">
+        <div className="max-w-screen-xl mx-auto px-4 2xl:px-0">
             {/* filter and sorting  */}
-            <div className="flex flex-col md:flex-row justify-center items-center gap-6 my-8 px-4">
+            <div className="flex flex-col gap-5 sm:flex-row justify-center items-center sm:gap-3 md:gap-6 my-8 ">
                 {/* Category Selection */}
                 <div className="relative">
                     <select
@@ -50,7 +50,7 @@ const AllBlogs = () => {
                         }}
                         name="category"
                         id="category"
-                        className="w-full md:w-64 px-4 py-3 border border-gray-300 rounded-lg text-gray-600 bg-white shadow-sm focus:ring focus:ring-blue-300 focus:outline-none"
+                        className="w-full sm:w-40 md:w-48 lg:w-64 px-4 py-3 border border-gray-300 rounded-lg text-gray-600 bg-white shadow-sm focus:ring focus:ring-blue-300 focus:outline-none"
                     >
                         <option value="">Filter By Category</option>
                         <option value="Business">Business</option>
@@ -63,7 +63,7 @@ const AllBlogs = () => {
                 </div>
 
                 {/* Search Bar */}
-                <div className="flex items-center w-full md:w-auto bg-white border border-gray-300 rounded-lg shadow-sm focus-within:ring focus-within:ring-blue-300">
+                <div className="flex items-center w-auto md:w-auto bg-white border border-gray-300 rounded-lg shadow-sm focus-within:ring focus-within:ring-blue-300">
                     <input
                         value={searchValue}
                         onChange={(event) => setSearchValue(event.target.value)}
