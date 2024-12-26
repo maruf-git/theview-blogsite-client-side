@@ -71,14 +71,14 @@ const BlogDetails = () => {
     }
 
     return (
-        <div className="max-w-screen-md mx-auto my-20">
+        <div className="max-w-screen-md mx-auto mt-10 mb-20 md:my-20 px-4 lg:px-0">
             <div className="space-y-6">
                 {/* blog title */}
                 <h1 className="text-[#242424] font-bold text-4xl">{title}</h1>
                 {/* blog short description */}
                 <p className="text-[#6B6B6B] font-semibold text-xl">{short_des}</p>
                 {/* blogger details and update blog*/}
-                <div className="flex justify-between">
+                <div className="flex justify-between items-center">
                     {/* blogger details */}
                     <div className="flex gap-3 items-center">
                         <div className="avatar">
@@ -94,7 +94,7 @@ const BlogDetails = () => {
                     {/* conditionally rendering edit post button */}
                     {
                         user?.email === blogger_email && <div>
-                            <Link to={`/update-blog/${id}`} className="btn outline-none border-none bg-[#009bff] hover:bg-[#0073bd] text-white !font-semibold ">Update Post</Link>
+                            <Link to={`/update-blog/${id}`} className="btn btn-sm outline-none border-none bg-[#009bff] hover:bg-[#0073bd] text-white !font-semibold ">Update</Link>
                         </div>
                     }
                 </div>
