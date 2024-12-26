@@ -66,20 +66,20 @@ const Home = () => {
                     {/* text content */}
                     <div className="w-full py-10 md:py-0 md:w-[70%]">
                         {/* title */}
-                        <h1 className="font-bold text-3xl leading-normal md:text-5xl text-white md:leading-[65px]">Make Confident Business Decisions With Practitioner-Analyst Led Tech Research</h1>
+                        <h1 className="font-bold text-3xl leading-normal md:text-5xl text-white md:leading-[65px]">Where curiosity meets creativity. Explore blogs that captivate your mind and spark new ideas.</h1>
                         {/* features */}
                         <div className="my-8 space-y-1 md:space-y-2">
                             <div className="flex items-center gap-1">
                                 <TiTick size={30} className="text-blue-500" />
-                                <p className="text-white text-base md:text-xl">Accessible, affordable research subscriptions</p>
+                                <p className="text-white text-base md:text-xl">Fueling Minds, One Post at a Time.</p>
                             </div>
                             <div className="flex items-center gap-1">
                                 <TiTick size={30} className="text-blue-500" />
-                                <p className="text-white text-base md:text-xl">Comprehensive vendor evaluations</p>
+                                <p className="text-white text-base md:text-xl">Explore. Engage. Elevate.</p>
                             </div>
                             <div className="flex items-center gap-1">
                                 <TiTick size={30} className="text-blue-500" />
-                                <p className="text-white text-base md:text-xl">In-depth analysis from industry practitioners</p>
+                                <p className="text-white text-base md:text-xl">Dive Into a World of Ideas and Perspectives.</p>
                             </div>
                         </div>
                         {/* join our community button */}
