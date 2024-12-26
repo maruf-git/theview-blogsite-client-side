@@ -31,7 +31,7 @@ const BlogCard = ({ blog }) => {
 
 
     return (
-        <div className="card card-compact bg-base-100 w-[410px]  rounded-none">
+        <div className="card card-compact bg-base-100   rounded-none">
             {/* blog image */}
             <div >
                 {/* <Link to={`/blogs/${_id}`}> */}
@@ -40,7 +40,7 @@ const BlogCard = ({ blog }) => {
                     className="relative">
                     <motion.img
                         whileHover={{ scale: 1.2 }}
-                        className="h-[200px] w-full object-cover  overflow-hidden"
+                        className="h-[280px] sm:h-[240px] w-full object-cover  overflow-hidden"
                         src={image}
                         alt={title} />
                     {/* bookmark button */}

@@ -10,7 +10,7 @@ const TechnologyBlogCard = ({ blog }) => {
     return (
         <div className=" w-full">
             <figure>
-                <img className="h-[180px] w-full object-cover" src={image} alt="" />
+                <img className="h-[280px] sm:h-[180px] w-full object-cover" src={image} alt="" />
             </figure>
 
             {/* title */}

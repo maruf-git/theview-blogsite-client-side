@@ -93,13 +93,13 @@ const AllBlogs = () => {
                     Reset
                 </button>
             </div>
-
+            {/* all blogs */}
             <div>
                 <div className="mb-10">
                     <h1 className="font-bold text-4xl pl-2 border-l-[5px] py-5">All Blogs</h1>
                 </div>
                 {/* blogs card container */}
-                <div className="mb-20  grid grid-cols-3 gap-5">
+                <div className="mb-20 grid sm:grid-cols-2 md:gap-5 lg:grid-cols-3 gap-5">
                     {
                         blogs.map(blog => <BlogCard key={blog._id} blog={blog}></BlogCard>)
                     }
