@@ -30,7 +30,7 @@ const WishlistBlogCard = ({ blog, handleDelete }) => {
                         onClick={() => handleDelete(_id)}
                         className="btn btn-sm bg-red-600 hover:bg-red-500 text-white py-2 px-4 rounded-md shadow-md transition duration-200"
                     >
-                        Delete
+                        Remove
                     </button>
                 </div>
             </div>

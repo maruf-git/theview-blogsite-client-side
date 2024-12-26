@@ -26,18 +26,18 @@ const WishList = () => {
     }, [axiosSecure, user.email])
 
     const handleDelete = (id) => {
-        console.log(id);
+        // console.log(id);
         axios.delete(`${import.meta.env.VITE_BASE_URI}/delete-wishlist/${id}`)
             .then(res => {
-                console.log(res.data);
+                // console.log(res.data);
                 if (res.data.deletedCount) {
                     toast.success('Delete Successful');
 
                     // refetching wishlist
                     axiosSecure.get(`${import.meta.env.VITE_BASE_URI}/wishlist/${user?.email}`)
                         .then(res => {
-                            console.log('pagla:', res);
-                            console.log(res.data);
+                            // console.log('pagla:', res);
+                            // console.log(res.data);
                             setBlogs(res.data);
                         })
                 }

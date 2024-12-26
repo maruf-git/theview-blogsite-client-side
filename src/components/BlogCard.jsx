@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 import { FaBookmark } from "react-icons/fa6";
 import { Tooltip } from 'react-tooltip';
 import 'react-tooltip/dist/react-tooltip.css'
@@ -11,6 +11,7 @@ import * as motion from "motion/react-client"
 const BlogCard = ({ blog }) => {
     const { user } = useContext(AuthContext);
     const axiosSecure = useAxiosSecure();
+    const navigate = useNavigate();
     // console.log(blog);
     const { title, image, category, _id, short_des } = blog;
 
@@ -18,11 +19,19 @@ const BlogCard = ({ blog }) => {
         const blog_id = _id;
         const email = user?.email;
         const wishlistInfo = { blog_id, email, title, image, category, short_des };
+
+        if (!user) {
+            // toast.error('Please login first!');
+            // return <Navigate to='/'></Navigate>;
+            navigate('/login');
+            return;
+        }
+
         // posting the data to the database
         axiosSecure.post(`${import.meta.env.VITE_BASE_URI}/wishlist`, wishlistInfo)
             .then(res => {
-                console.log(res.data);
-                if (res.data.insertedId) {
+                // console.log(res.data);
+                if (res.data.insertedId && email) {
                     toast.success('Added to wishlist');
                 }
             })
@@ -34,13 +43,12 @@ const BlogCard = ({ blog }) => {
         <div className="card card-compact bg-base-100   rounded-none">
             {/* blog image */}
             <div >
-                {/* <Link to={`/blogs/${_id}`}> */}
+                {/* <Link to={`/blog/${_id}`}> */}
                 <figure
-
                     className="relative">
                     <motion.img
                         whileHover={{ scale: 1.2 }}
-                        className="h-[280px] sm:h-[240px] w-full object-cover  overflow-hidden"
+                        className="h-[280px] sm:h-[240px] w-full object-cover rounded-lg  overflow-hidden"
                         src={image}
                         alt={title} />
                     {/* bookmark button */}
@@ -58,7 +66,9 @@ const BlogCard = ({ blog }) => {
                 {/* category */}
                 <p className="text-base">{category}</p>
                 {/* title */}
+                {/* <motion.div whileHover={{ scale: 1.02 }}> */}
                 <Link to={`/blog/${_id}`}><h2 className="card-title p-0 m-0 font-bold hover:text-blue-700 hover:underline">{title.slice(0, 60)}...</h2></Link>
+                {/* </motion.div> */}
             </div>
             {/* blog short description */}
             <div className="divider m-0"></div>

@@ -22,7 +22,7 @@ const AllBlogs = () => {
                 setBlogs(res.data);
             })
             .catch(err => {
-                console.log(err);
+                // console.log(err);
             })
     }, [filter, search])
 
@@ -31,8 +31,8 @@ const AllBlogs = () => {
         setSearch(searchValue);
     }
     // console.log("search value:", searchValue);
-    console.log("final search:", search);
-    console.log('filter', filter);
+    // console.log("final search:", search);
+    // console.log('filter', filter);
 
 
     if (loading) return <LoadingSpinner></LoadingSpinner>;

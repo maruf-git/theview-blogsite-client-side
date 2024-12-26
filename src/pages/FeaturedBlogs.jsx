@@ -33,11 +33,11 @@ const FeaturedBlogs = () => {
     useEffect(() => {
         axios.get(`${import.meta.env.VITE_BASE_URI}/featured-blogs`)
             .then(res => {
-                console.log(res.data);
+                // console.log(res.data);
                 setBlogs(res.data);
             })
             .catch(err => {
-                console.log(err);
+                // console.log(err);
             })
     }, [])
 

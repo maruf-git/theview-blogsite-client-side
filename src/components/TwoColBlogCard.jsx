@@ -1,9 +1,9 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
 
-import { div } from "framer-motion/client";
-import { Link } from "react-router-dom";
 
+import { Link } from "react-router-dom";
+import * as motion from "motion/react-client"
 
 const TwoColBlogCard = ({ blog, idx }) => {
     const { title, image, _id, post_time } = blog;
@@ -19,13 +19,16 @@ const TwoColBlogCard = ({ blog, idx }) => {
                     </Link>
                 </div>
             }
-<div className="">
-    {/* publishing time */}
-    <p className="">Published on {post_time}</p>
-    {/* title */}
-    <Link to={`/blog/${_id}`}><h2 className="card-title p-0 m-0 font-bold hover:text-blue-700 hover:underline ">{title}</h2></Link>
-    <div className="divider w-[100px] border-b-2 border-red-600"></div>
-</div>
+            <motion.div whileHover={{ scale: 1.02 }} className="">
+                {/* publishing time */}
+                <p className="">Published on {post_time}</p>
+                {/* title */}
+                <div >
+                    <Link to={`/blog/${_id}`}><h2 className="card-title p-0 m-0 font-bold hover:text-blue-700 hover:underline ">{title}</h2></Link>
+                    <div className="divider w-[100px] border-b-2 border-red-600"></div>
+                </div>
+
+            </motion.div>
         </div >
     );
 };

@@ -28,7 +28,7 @@ const Login = () => {
                 // console.log("redirect:", location?.state);
                 axios.post(`${import.meta.env.VITE_BASE_URI}/jwt`, { email: res.user?.email }, { withCredentials: true })
                     .then(res => {
-                        console.log("token creation successful.", res.data);
+                        // console.log("token creation successful.", res.data);
                         toast.success('Login successful');
                         navigate(location?.state || '/');
                     })
@@ -48,7 +48,7 @@ const Login = () => {
         googleLogin()
             .then((result) => {
                 setUser(result.user);
-                console.log("redirect:", location?.state);
+                // console.log("redirect:", location?.state);
 
                 axios.post(`${import.meta.env.VITE_BASE_URI}/jwt`, { email: result.user?.email }, { withCredentials: true })
                     .then(res => {

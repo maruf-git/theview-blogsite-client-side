@@ -25,7 +25,7 @@ const Home = () => {
                 setRecentBlogs(res.data);
             })
             .catch(err => {
-                console.log(err);
+                // console.log(err);
             })
     }, [])
 
@@ -36,7 +36,7 @@ const Home = () => {
                 setBlogs([...res.data].reverse());
             })
             .catch(err => {
-                console.log(err);
+                // console.log(err);
             })
     }, [])
 
@@ -44,8 +44,8 @@ const Home = () => {
     const handleSubmit = (event) => {
         event.preventDefault();
         const email = event.target.email.value;
-        console.log(email);
-        toast.success('Thanks for subscribing!')
+        // console.log(email);
+        toast.success('Thanks for subscribing our newsletter!')
         event.target.reset();
     }
 
@@ -127,7 +127,7 @@ const Home = () => {
                 </div>
             </section>
 
-            {/*lifestyle,lifestyle, entertainment */}
+            {/*lifestyle, entertainment */}
             <section className="mt-20 px-4 2xl:px-0">
                 <div className="max-w-screen-xl mx-auto">
                     <div className="grid gap-10 md:grid-cols-2 md:gap-5">
@@ -149,6 +149,40 @@ const Home = () => {
                             </div>
                             {
                                 blogs.filter((blog) => blog.category === "Entertainment")
+                                    .slice(0, 6)
+                                    .map((blog, idx) => <TwoColBlogCard key={blog._id} blog={blog} idx={idx}></TwoColBlogCard>)
+                            }
+                        </div>
+                        {/* lifestyle
+                        <div className="border border-blue-400">
+
+                        </div> */}
+                    </div>
+                </div>
+            </section>
+
+            {/* science , business */}
+            <section className="mt-20 px-4 2xl:px-0">
+                <div className="max-w-screen-xl mx-auto">
+                    <div className="grid gap-10 md:grid-cols-2 md:gap-5">
+                        {/* Science */}
+                        <div className="">
+                            <div className="mb-5">
+                                <h1 className="font-bold text-4xl pl-2 border-l-[5px] py-5">Science</h1>
+                            </div>
+                            {
+                                blogs.filter((blog) => blog.category === "Science")
+                                    .slice(0, 6)
+                                    .map((blog, idx) => <TwoColBlogCard key={blog._id} blog={blog} idx={idx}></TwoColBlogCard>)
+                            }
+                        </div>
+                        {/* Business */}
+                        <div className="">
+                            <div className="mb-5">
+                                <h1 className="font-bold text-4xl pl-2 border-l-[5px] py-5">Business</h1>
+                            </div>
+                            {
+                                blogs.filter((blog) => blog.category === "Business")
                                     .slice(0, 6)
                                     .map((blog, idx) => <TwoColBlogCard key={blog._id} blog={blog} idx={idx}></TwoColBlogCard>)
                             }

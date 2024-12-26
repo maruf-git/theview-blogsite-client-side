@@ -29,7 +29,7 @@ const BlogDetails = () => {
     // destructure the blog
     const { title, image, category, post_time, description, short_des, blogger_image, blogger_name, blogger_email } = blog;
     // const date = parseISO(post_time);
-    console.log(description);
+    // console.log(description);
 
     // get all comments on this blog
     const getAllComments = () => {

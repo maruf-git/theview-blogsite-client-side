@@ -69,7 +69,7 @@ const Register = () => {
                     .then(() => {
                         // setUser(result.user);
                         toast.success('Registration Successful!');
-                        console.log("redirect:", location?.state);
+                        // console.log("redirect:", location?.state);
                         navigate(location?.state || '/');
                         // if (location && location.state && location.state.destination) {
                         //     navigate(`${location?.state?.destination}`)
@@ -94,7 +94,7 @@ const Register = () => {
             .then((result) => {
                 // setUser(result.user);
                 toast.success('Registration Successful');
-                console.log("redirect:", location?.state);
+                // console.log("redirect:", location?.state);
                 navigate(location?.state || '/');
                 // if (location && location.state && location.state.destination) {
                 //     navigate(`${location?.state?.destination}`)

@@ -50,9 +50,9 @@ const AddBlog = () => {
         // experiment
         axiosSecure.post(`${import.meta.env.VITE_BASE_URI}/add-blog`, blog)
             .then(res => {
-                console.log(res.data);
+                // console.log(res.data);
                 if (res.data.insertedId) {
-                    console.log(res.data);
+                    // console.log(res.data);
                     toast.success('Post Successful!');
                     navigate('/all-blogs');
                 }
