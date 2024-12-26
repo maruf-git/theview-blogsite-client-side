@@ -60,42 +60,45 @@ const FeaturedBlogs = () => {
     };
 
     return (
-        <div className="max-w-screen-xl mx-auto">
+        <div className="max-w-screen-xl mx-auto px-4 2xl:px-0">
             <div className="my-10">
-                <div className="">
+                <div>
                     <h1 className="font-bold text-4xl pl-2 border-l-[5px] py-5">Featured Blogs</h1>
                 </div>
-                <table className="table-auto w-full text-left">
-                    <thead className="bg-white text-black">
-                        {table.getHeaderGroups().map((headerGroup) => (
-                            <tr key={headerGroup.id}>
-                                {headerGroup.headers.map((header) => (
-                                    <th
-                                        key={header.id}
-                                        className="border px-6 py-3 cursor-pointer"
-                                        onClick={header.column.getToggleSortingHandler()}
-                                    >
-                                        <div className="flex items-center justify-between">
-                                            {flexRender(header.column.columnDef.header, header.getContext())}
-                                            <span className="ml-2 text-lg">{renderSortingIndicator(header.column)}</span>
-                                        </div>
-                                    </th>
-                                ))}
-                            </tr>
-                        ))}
-                    </thead>
-                    <tbody>
-                        {table.getRowModel().rows.map((row) => (
-                            <tr key={row.id} className="border-b">
-                                {row.getVisibleCells().map((cell) => (
-                                    <td key={cell.id} className="border px-6 py-4">
-                                        {flexRender(cell.column.columnDef.cell, cell.getContext())}
-                                    </td>
-                                ))}
-                            </tr>
-                        ))}
-                    </tbody>
-                </table>
+                {/* Add overflow-x-auto wrapper */}
+                <div className="overflow-x-auto">
+                    <table className="table-auto w-full text-left">
+                        <thead className="bg-white text-black">
+                            {table.getHeaderGroups().map((headerGroup) => (
+                                <tr key={headerGroup.id}>
+                                    {headerGroup.headers.map((header) => (
+                                        <th
+                                            key={header.id}
+                                            className="border px-6 py-3 cursor-pointer"
+                                            onClick={header.column.getToggleSortingHandler()}
+                                        >
+                                            <div className="flex items-center justify-between">
+                                                {flexRender(header.column.columnDef.header, header.getContext())}
+                                                <span className="ml-2 text-lg">{renderSortingIndicator(header.column)}</span>
+                                            </div>
+                                        </th>
+                                    ))}
+                                </tr>
+                            ))}
+                        </thead>
+                        <tbody>
+                            {table.getRowModel().rows.map((row) => (
+                                <tr key={row.id} className="border-b">
+                                    {row.getVisibleCells().map((cell) => (
+                                        <td key={cell.id} className="border px-6 py-4">
+                                            {flexRender(cell.column.columnDef.cell, cell.getContext())}
+                                        </td>
+                                    ))}
+                                </tr>
+                            ))}
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     );
