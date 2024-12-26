@@ -1,6 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import { flexRender, getCoreRowModel, getSortedRowModel, useReactTable } from "@tanstack/react-table";
 import axios from "axios";
+import { Helmet } from "react-helmet-async";
 
 const columns = [
     {
@@ -61,6 +62,9 @@ const FeaturedBlogs = () => {
 
     return (
         <div className="max-w-screen-xl mx-auto px-4 2xl:px-0">
+            <Helmet>
+                <title>Featured Blogs - TheView</title>
+            </Helmet>
             <div className="my-10">
                 <div>
                     <h1 className="font-bold text-4xl pl-2 border-l-[5px] py-5">Featured Blogs</h1>

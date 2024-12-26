@@ -3,6 +3,7 @@ import { useContext, useEffect, useState } from "react";
 import BlogCard from "../components/BlogCard";
 import { AuthContext } from "../providers/AuthProvider";
 import LoadingSpinner from '../components/LoadingSpinner'
+import { Helmet } from "react-helmet-async";
 
 
 const AllBlogs = () => {
@@ -35,6 +36,9 @@ const AllBlogs = () => {
 
     return (
         <div className="max-w-screen-xl mx-auto px-4 2xl:px-0">
+            <Helmet>
+                <title>All Blogs - TheView</title>
+            </Helmet>
             {/* filter and sorting  */}
             <div className="flex flex-col gap-5 sm:flex-row justify-center items-center sm:gap-3 md:gap-6 my-8 ">
                 {/* Category Selection */}

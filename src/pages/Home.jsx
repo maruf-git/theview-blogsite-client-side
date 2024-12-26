@@ -10,10 +10,11 @@ import Lottie from "lottie-react";
 import toast from "react-hot-toast";
 import TechnologyBlogCard from "../components/TechnologyBlogCard";
 import TwoColBlogCard from "../components/TwoColBlogCard";
-import LoadingSpinner from "../components/LoadingSpinner";
+import { Helmet } from "react-helmet-async";
+
 
 const Home = () => {
-    const {loading, user } = useContext(AuthContext);
+    const { loading, user } = useContext(AuthContext);
     const [recentBlogs, setRecentBlogs] = useState([]);
     const [blogs, setBlogs] = useState([]);
     useEffect(() => {
@@ -46,10 +47,13 @@ const Home = () => {
         toast.success('Thanks for subscribing!')
         event.target.reset();
     }
-    // if(loading)<LoadingSpinner></LoadingSpinner>
+
 
     return (
         <div>
+            <Helmet>
+                <title>Home - TheView</title>
+            </Helmet>
             {/* hero section */}
             <section
                 style={{

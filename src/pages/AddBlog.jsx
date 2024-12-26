@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { ThemeContext } from "../providers/ThemeProvider";
 import axios from "axios";
 import useAxiosSecure from "../hooks/UseAxiosSecure";
+import { Helmet } from "react-helmet-async";
 // import { Helmet } from "react-helmet-async";
 
 const AddBlog = () => {
@@ -66,6 +67,9 @@ const AddBlog = () => {
 
     return (
         <div className={`min-h-screen py-10 ${themeMode === "light" ? "bg-gray-50" : "bg-gray-900"}`}>
+            <Helmet>
+                <title>Add Blog - TheView</title>
+            </Helmet>
             <div className="max-w-3xl mx-auto px-4">
                 <div className={`bg-white shadow-lg rounded-lg overflow-hidden ${themeMode === "light" ? "" : "bg-gray-800 text-gray-100"}`}>
                     <div className="py-8 px-6">

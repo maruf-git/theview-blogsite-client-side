@@ -6,6 +6,7 @@ import 'react-tooltip/dist/react-tooltip.css'
 import { WiDaySunny } from "react-icons/wi";
 import { MdOutlineNightlight } from "react-icons/md";
 import { ThemeContext } from "../providers/ThemeProvider";
+import axios from "axios";
 
 const Navbar = () => {
     const navigate = useNavigate();
@@ -15,6 +16,10 @@ const Navbar = () => {
     const handleLogout = () => {
         logout()
             .then(() => {
+                // deleting token from browser cookie by sending get request
+                // axios.get(`${import.meta.env.VITE_BASE_URI}/logout`, { withCredentials: true })
+                //     .then(res => {
+                //     })
                 navigate("/");
             })
             .catch((err) => {

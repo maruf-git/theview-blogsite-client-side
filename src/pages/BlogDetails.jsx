@@ -6,6 +6,7 @@ import axios from "axios";
 import toast from "react-hot-toast";
 import Comment from "../components/Comment";
 import LoadingSpinner from "../components/LoadingSpinner";
+import { Helmet } from "react-helmet-async";
 // import { format, parseISO } from "date-fns";
 
 const BlogDetails = () => {
@@ -49,7 +50,7 @@ const BlogDetails = () => {
         const commentDetails = { comment, commenter: user?.displayName, commenter_email: user?.email, commenter_image: user?.photoURL, comment_time, blog_id: id };
 
         // posting commentDetails to the db
-        axiosSecure.post(`${import.meta.env.VITE_BASE_URI}/add-comment`,commentDetails)
+        axiosSecure.post(`${import.meta.env.VITE_BASE_URI}/add-comment`, commentDetails)
             .then(res => {
                 if (res.data.insertedId) {
                     toast.success('Comment Successful');
@@ -57,10 +58,10 @@ const BlogDetails = () => {
                     getAllComments();
                 }
             })
-            // .catch(err => {
-            //     console.log(err);
-            //     toast.error(err.message);
-            // })
+        // .catch(err => {
+        //     console.log(err);
+        //     toast.error(err.message);
+        // })
     }
 
     if (loading) return <LoadingSpinner></LoadingSpinner>;
@@ -72,6 +73,9 @@ const BlogDetails = () => {
 
     return (
         <div className="max-w-screen-md mx-auto mt-10 mb-20 md:my-20 px-4 lg:px-0">
+            <Helmet>
+                <title>{title} - TheView</title>
+            </Helmet>
             <div className="space-y-6">
                 {/* blog title */}
                 <h1 className="text-[#242424] font-bold text-4xl">{title}</h1>

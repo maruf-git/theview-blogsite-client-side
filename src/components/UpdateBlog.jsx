@@ -3,6 +3,7 @@ import { ThemeContext } from "../providers/ThemeProvider";
 import useAxiosSecure from "../hooks/UseAxiosSecure";
 import { useNavigate, useParams } from "react-router-dom";
 import toast from "react-hot-toast";
+import { Helmet } from "react-helmet-async";
 
 
 const UpdateBlog = () => {
@@ -63,6 +64,9 @@ const UpdateBlog = () => {
     }
     return (
         <div className={`min-h-screen py-10 ${themeMode === "light" ? "bg-gray-50" : "bg-gray-900"}`}>
+            <Helmet>
+                <title>Update Blog - TheView</title>
+            </Helmet>
             <div className="max-w-3xl mx-auto px-4">
                 <div className={`bg-white shadow-lg rounded-lg overflow-hidden ${themeMode === "light" ? "" : "bg-gray-800 text-gray-100"}`}>
                     <div className="py-8 px-6">
