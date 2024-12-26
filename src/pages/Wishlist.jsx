@@ -45,6 +45,7 @@ const WishList = () => {
     }
 
     if (loading) return <LoadingSpinner></LoadingSpinner>
+    
 
     return (
         <div className="max-w-screen-xl mx-auto px-4 2xl:px-0">
@@ -58,6 +59,11 @@ const WishList = () => {
                         blogs.map(blog => <WishlistBlogCard key={blog._id} blog={blog} handleDelete={handleDelete}></WishlistBlogCard>)
                     }
                 </div>
+                {
+                    blogs.length === 0 && <div>
+                        <p className="my-20  text-2xl font-bold text-center">No Blogs Available. Please Add Some Blogs.</p>
+                    </div>
+                }
             </div>
         </div>
     );

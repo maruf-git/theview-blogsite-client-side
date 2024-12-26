@@ -37,6 +37,20 @@ const UpdateBlog = () => {
         const blog = { title, image, category, description, short_des };
         console.table(blog);
 
+        if (title.trim() === "") {
+            setErrorMessage("Title can not be empty!");
+            return;
+        }
+        if (short_des.trim() === "") {
+            setErrorMessage("Short description can not be empty!");
+            return;
+        }
+        if (description.trim() === "") {
+            setErrorMessage("Description can not be empty!");
+            return;
+        }
+
+
         axiosSecure.patch(`${import.meta.env.VITE_BASE_URI}/update-blog/${id}`, blog)
             .then(res => {
                 if (res.data.modifiedCount) {

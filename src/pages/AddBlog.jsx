@@ -33,21 +33,18 @@ const AddBlog = () => {
         const post_time = new Date();
         const blog = { title, image, category, short_des, description, blogger_name, blogger_email, blogger_image, post_time, length }
 
-        // final
-        // axios.post(`${import.meta.env.VITE_BASE_URI}/add-blog`, blog, { withCredentials: true })
-        //     .then(res => {
-        //         console.log(res.data);
-        //         if (res.data.insertedId) {
-        //             console.log(res.data);
-        //             toast.success('Post Successful!');
-        //             navigate('/all-blogs');
-        //         }
-
-        //     })
-        //     .catch(err => {
-        //         console.log(err);
-        //         toast.error(err.message)
-        //     })
+        if (title.trim() === "") {
+            setErrorMessage("Title can not be empty!");
+            return;
+        }
+        if (short_des.trim() === "") {
+            setErrorMessage("Short description can not be empty!");
+            return;
+        }
+        if (description.trim() === "") {
+            setErrorMessage("Description can not be empty!");
+            return;
+        }
 
         // experiment
         axiosSecure.post(`${import.meta.env.VITE_BASE_URI}/add-blog`, blog)
