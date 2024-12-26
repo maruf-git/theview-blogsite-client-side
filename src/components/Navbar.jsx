@@ -34,7 +34,7 @@ const Navbar = () => {
                 <div className="navbar flex justify-between items-center !mx-0 !px-0">
                     {/* Navbar Start */}
                     <div className="navbar-start flex items-center gap-4">
-                        <div className="dropdown lg:hidden">
+                        <div className="dropdown lg:hidden z-50">
                             <button
                                 tabIndex={0}
                                 className="btn btn-ghost !px-0 py-1">
