@@ -55,10 +55,16 @@ const Navbar = () => {
                                 tabIndex={0}
                                 className="menu menu-sm dropdown-content bg-white shadow-md rounded-lg p-2 w-52">
                                 <li><NavLink to="/">Home</NavLink></li>
-                                <li><NavLink to="/add-blog">Add Blog</NavLink></li>
+                                {
+                                    user &&
+                                    <li><NavLink to="/add-blog">Add Blog</NavLink></li>
+                                }
                                 <li><NavLink to="/all-blogs">All Blogs</NavLink></li>
                                 <li><NavLink to="/featured-blogs">Featured Blogs</NavLink></li>
-                                <li><NavLink to="/wishlist">Wishlist</NavLink></li>
+                                {
+                                    user &&
+                                    <li><NavLink to="/wishlist">Wishlist</NavLink></li>
+                                }
                             </ul>
                         </div>
                         <Link to="/" className={`text-2xl font-semibold tracking-wide ${themeMode === "light" ? "bg-white text-gray-800" : "bg-gray-900 text-white"}`}>TheView</Link>
@@ -66,11 +72,17 @@ const Navbar = () => {
                     {/* Navbar Center (Visible on Desktop) */}
                     <div className="navbar-center hidden lg:flex">
                         <ul className="menu menu-horizontal gap-6 text-lg">
-                            <li><NavLink to="/">Home</NavLink></li>
-                            <li><NavLink to="/add-blog">Add Blog</NavLink></li>
-                            <li><NavLink to="/all-blogs">All Blogs</NavLink></li>
-                            <li><NavLink to="/featured-blogs">Featured Blogs</NavLink></li>
-                            <li><NavLink to="/wishlist">Wishlist</NavLink></li>
+                        <li><NavLink to="/">Home</NavLink></li>
+                                {
+                                    user &&
+                                    <li><NavLink to="/add-blog">Add Blog</NavLink></li>
+                                }
+                                <li><NavLink to="/all-blogs">All Blogs</NavLink></li>
+                                <li><NavLink to="/featured-blogs">Featured Blogs</NavLink></li>
+                                {
+                                    user &&
+                                    <li><NavLink to="/wishlist">Wishlist</NavLink></li>
+                                }
                         </ul>
                     </div>
                     {/* Navbar End */}
