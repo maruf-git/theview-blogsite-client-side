@@ -62,11 +62,11 @@ const Home = () => {
                 }}
                 className={`bg-cover bg-no-repeat bg-center px-4 2xl:px-0`}
             >
-                <div className="max-w-screen-xl mx-auto md:min-h-[700px]   flex flex-col md:flex-row justify-between items-center">
+                <div className="max-w-screen-xl mx-auto md:min-h-[60vh]   flex flex-col md:flex-row justify-between items-center">
                     {/* text content */}
-                    <div className="w-full py-10 md:py-0 md:w-[70%]">
+                    <div className="w-full py-10 md:py-0 md:w-[60%]">
                         {/* title */}
-                        <h1 className="font-bold text-3xl leading-normal md:text-5xl text-white md:leading-[65px]">Where curiosity meets creativity. Explore blogs that captivate your mind and spark new ideas.</h1>
+                        <h1 className="font-bold text-3xl leading-normal md:text-5xl text-white md:leading-[55px]">Where curiosity meets creativity. Explore blogs that captivate your mind and spark new ideas.</h1>
                         {/* features */}
                         <div className="my-8 space-y-1 md:space-y-2">
                             <div className="flex items-center gap-1">
@@ -96,7 +96,7 @@ const Home = () => {
             </section>
 
             {/* recent blogs section */}
-            <section className="mt-20 px-4 2xl:px-0">
+            <section className="mt-10 px-4 2xl:px-0">
                 <div className="max-w-screen-xl mx-auto">
                     <div className="mb-10">
                         <h1 className="font-bold text-4xl pl-2 border-l-[5px] py-5">Recent Blogs</h1>
@@ -111,7 +111,7 @@ const Home = () => {
             </section>
 
             {/* technology blogs section */}
-            <section id="technology" className={`mt-20 px-4 2xl:px-0 bg-[#F2F1ED] ${themeMode === "light" ? "" : "bg-gray-900 text-[rgb(166,173,187)]"}`}>
+            <section id="technology" className={`mt-10 px-4 2xl:px-0 bg-[#F2F1ED] ${themeMode === "light" ? "" : "bg-gray-900 text-[rgb(166,173,187)]"}`}>
 
                 <div className="max-w-screen-xl mx-auto py-14 ">
                     <div className="mb-5">
@@ -128,7 +128,7 @@ const Home = () => {
             </section>
 
             {/*lifestyle, entertainment */}
-            <section className="mt-20 px-4 2xl:px-0">
+            <section className="mt-10 px-4 2xl:px-0">
                 <div className="max-w-screen-xl mx-auto">
                     <div className="grid gap-10 md:grid-cols-2 md:gap-5">
                         {/* lifestyle */}
@@ -162,7 +162,7 @@ const Home = () => {
             </section>
 
             {/* science , business */}
-            <section className="mt-20 px-4 2xl:px-0">
+            <section className="mt-10 px-4 2xl:px-0">
                 <div className="max-w-screen-xl mx-auto">
                     <div className="grid gap-10 md:grid-cols-2 md:gap-5">
                         {/* Science */}
@@ -196,7 +196,7 @@ const Home = () => {
             </section>
 
             {/* newsletter section */}
-            <section className="my-20 py-10 px-4 2xl:px-0">
+            <section className="my-10 py-10 px-4 2xl:px-0">
                 <div className={`max-w-screen-xl mx-auto p-10 bg-[rgb(229,246,255)] ${themeMode === "light" ? "" : "bg-gray-900 text-[rgb(166,173,187)]"} rounded-3xl flex flex-col justify-center items-center gap-5 md:flex-row md:justify-between shadow-xl`}>
                     {/* newsletter left side*/}
                     <div className="flex flex-col gap-6 ">

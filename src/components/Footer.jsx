@@ -19,6 +19,9 @@ const Footer = () => {
                                 <Link to="/all-blogs" className="hover:text-white">All Blogs</Link>
                             </li>
                             <li>
+                                <Link to="/featured-blogs" className="hover:text-white">Featured Blogs</Link>
+                            </li>
+                            {/* <li>
                                 <Link to="/" className="hover:text-white">Categories</Link>
                             </li>
                             <li>
@@ -26,7 +29,7 @@ const Footer = () => {
                             </li>
                             <li>
                                 <Link to="/" className="hover:text-white">Contact</Link>
-                            </li>
+                            </li> */}
                         </ul>
                     </div>
 
