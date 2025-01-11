@@ -11,6 +11,7 @@ const WishList = () => {
 
     const [blogs, setBlogs] = useState([]);
     const { user, loading } = useContext(AuthContext);
+    const [fetchLoading,setFetchLoading]=useState(true);
     const axiosSecure = useAxiosSecure();
 
     useEffect(() => {
@@ -19,6 +20,7 @@ const WishList = () => {
                 .then(res => {
                     // console.log(res.data);
                     setBlogs(res.data);
+                    setFetchLoading(false);
                 })
 
         }
@@ -45,7 +47,7 @@ const WishList = () => {
             })
     }
 
-    if (loading) return <LoadingSpinner></LoadingSpinner>
+    if (loading || fetchLoading) return <LoadingSpinner></LoadingSpinner>
 
 
     return (
@@ -55,7 +57,7 @@ const WishList = () => {
             </Helmet>
             <div className="my-20">
                 <div className="mb-10">
-                    <h1 className="font-bold text-4xl pl-2 border-l-[5px] py-5">Watchlist Blogs</h1>
+                    <h1 className="font-bold text-4xl pl-2 border-l-[5px] py-5">Wishlist Blogs</h1>
                 </div>
                 {/* blogs card container */}
                 <div className="">

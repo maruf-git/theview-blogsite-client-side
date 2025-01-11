@@ -123,13 +123,21 @@ const BlogDetails = () => {
                     {/* comment box */}
                     <p className={`text-[#242424] text-2xl font-semibold my-5 ${themeMode === "light" ? "" : "text-[rgb(166,173,187)]"}`}>Post a comment</p>
                     {
+                        user===null && <p className="mb-3">Please Login to comment!</p>
+                    }
+                    {
                         user?.email !== blogger_email && <form onSubmit={handleComment} className="mb-10" >
                             <div className="flex flex-col gap-5">
                                 {/* text area */}
-                                <textarea name='comment' className="textarea textarea-bordered h-[150px]" placeholder="What are your thoughts?"></textarea>
+                                <textarea 
+                                disabled={user===null}
+                                name='comment' 
+                                className="textarea textarea-bordered h-[150px]" placeholder="What are your thoughts?"></textarea>
                                 {/* comment button */}
                                 <div className="flex justify-end">
-                                    <button className="btn outline-none border-none bg-[#009bff] hover:bg-[#0073bd] text-white !font-semibold ">Post Comment</button>
+                                    <button
+                                    disabled={user===null}
+                                    className="btn outline-none border-none bg-[#009bff] hover:bg-[#0073bd] text-white !font-semibold ">Post Comment</button>
                                 </div>
 
                             </div>
@@ -137,7 +145,7 @@ const BlogDetails = () => {
                     }
                     {/* no comment box for blogger */}
                     {
-                        user?.email === blogger_email && <div><p className={`text-[20px] text-[#242424] my-3  ${themeMode === "light" ? "" : "text-[rgb(166,173,187)]"}`}>Can not comment on own blog.</p></div>
+                        user && user?.email === blogger_email && <div><p className={`text-[20px] text-[#242424] my-3  ${themeMode === "light" ? "" : "text-[rgb(166,173,187)]"}`}>Can not comment on own blog.</p></div>
                     }
                     {/* all comments */}
                     <div className="!my-20 space-y-5">
